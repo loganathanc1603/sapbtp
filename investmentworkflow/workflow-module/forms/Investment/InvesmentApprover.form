@@ -1,0 +1,121 @@
+{
+    "id": "invesmentapprover",
+    "schemaVersion": "1.1.0",
+    "name": "InvesmentApprover",
+    "revision": "1.0",
+    "type": "task",
+    "readOnly": true,
+    "content": [
+        {
+            "id": "general",
+            "type": "section",
+            "title": "General Information",
+            "content": [
+                {
+                    "id": "user_id",
+                    "type": "string",
+                    "label": "User ID",
+                    "readOnly": true,
+                    "value": "${context.FormContent.UserId}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "first_name",
+                    "type": "string",
+                    "label": "First Name",
+                    "readOnly": true,
+                    "value": "${context.FormContent.FirstName}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "last_name",
+                    "type": "string",
+                    "label": "Last Name",
+                    "readOnly": true,
+                    "value": "${context.FormContent.LastName}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "city",
+                    "type": "string",
+                    "label": "City",
+                    "readOnly": false,
+                    "value": "${context.FormContent.city}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "job_title",
+                    "type": "string",
+                    "label": "Job Title",
+                    "readOnly": false,
+                    "value": "${context.FormContent.jobTitle}",
+                    "constraints": {
+                        "required": false
+                    }
+                }
+            ]
+        },
+        {
+            "id": "investment_approvers",
+            "type": "section",
+            "title": "Investment Approvers",
+            "content": [
+                {
+                    "id": "central_manager_id",
+                    "type": "string",
+                    "label": "Central manager ID",
+                    "readOnly": true,
+                    "value": "${context.Response.Result[0].Approvers.cm_userid}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "local_manager_id",
+                    "type": "string",
+                    "label": "Local manager ID",
+                    "readOnly": true,
+                    "value": "${context.Response.Result[0].Approvers.lm_userid}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "central_manager_approval",
+                    "type": "boolean",
+                    "label": "Central manager Approval",
+                    "readOnly": true,
+                    "value": "${context.Response.Result[0].Approvers.cm_required}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "central_manager_approval_1",
+                    "type": "boolean",
+                    "label": "Local manager Approval",
+                    "readOnly": false,
+                    "value": "${context.Response.Result[0].Approvers.cm_required}",
+                    "constraints": {
+                        "required": false
+                    }
+                }
+            ]
+        }
+    ],
+    "decisions": [
+        {
+            "id": "approve",
+            "text": "Approve",
+            "decisionType": "positive"
+        }
+    ]
+}

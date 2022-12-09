@@ -1,0 +1,14 @@
+_schema-version: "3.2"
+ID: investment_workflow
+version: 0.0.1
+modules:
+  - name: workflow-module
+    type: com.sap.application.content
+    path: workflow-module
+    requires:
+      - name: wm_workflow
+        parameters:
+          content-target: true
+resources:
+  - name: wm_workflow
+    type: org.cloudfoundry.existing-service
