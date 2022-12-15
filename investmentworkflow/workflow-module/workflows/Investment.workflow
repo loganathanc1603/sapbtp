@@ -224,7 +224,7 @@
 		},
 		"a8e6a2b9-bc94-4d11-a0a6-bbdec669213e": {
 			"classDefinition": "com.sap.bpm.wfs.ui.SequenceFlowSymbol",
-			"points": "62,374 62,424",
+			"points": "62,344 62,445",
 			"sourceSymbol": "a7882018-1a0e-4d2d-90b3-597a51e855d1",
 			"targetSymbol": "49085783-8535-4b6c-b51c-9723f296a368",
 			"object": "3dc5419b-1d2f-49ef-bb07-3c001bd6fd73"
@@ -244,13 +244,15 @@
 		},
 		"62d7f4ed-4063-4c44-af8b-39050bd44926": {
 			"classDefinition": "com.sap.bpm.wfs.LastIDs",
+			"maildefinition": 1,
 			"hubapireference": 2,
-			"sequenceflow": 8,
+			"sequenceflow": 9,
 			"startevent": 1,
 			"endevent": 1,
 			"usertask": 2,
 			"servicetask": 2,
 			"scripttask": 3,
+			"mailtask": 1,
 			"exclusivegateway": 1
 		}
 	}
