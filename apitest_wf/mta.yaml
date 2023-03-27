@@ -1,0 +1,17 @@
+_schema-version: '3.2'
+ID: apitest_wf
+version: 0.0.1
+modules:
+  - name: wf_module_1
+    type: com.sap.application.content
+    path: wf_module
+    requires:
+      - name: api_test_wf
+        parameters:
+          content-target: true
+resources:
+  - name: api_test_wf
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: workflow
+      service-plan: lite
