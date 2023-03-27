@@ -1,11 +1,9 @@
-<mvc:View controllerName="ns.businesspartners.controller.Suppliers"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="ns.businesspartners.controller.Suppliers" displayBlock="true">
     <Page id="page" title="{i18n>title}">
         <content>
             <List id="idListSupplier" headerText="{LocalModel>/ListTitle}" items="{/BusinessPartnerSet}" growing="true" growingThreshold="50" updateFinished="onUpdateFinished">
                 <items>
-                    <StandardListItem id="idStandardListItems" title="{CompanyName}" description="{WebAddress}" ></StandardListItem>
+                    <StandardListItem id="idStandardListItems" title="{CompanyName}" description="{WebAddress}" />
                 </items>
             </List>
         </content>
