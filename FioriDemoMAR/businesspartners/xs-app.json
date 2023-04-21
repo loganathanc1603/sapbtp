@@ -3,6 +3,39 @@
   "authenticationMethod": "route",
   "routes": [
     {
+      "source": "^/browser/(.*)$",
+      "target": "/$1",
+      "destination": "SPA_DMS",
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/v2/browse/(.*)$",
+      "target": "/v2/browse/$1",
+      "destination": "EMPUI5SERVICE",
+      "authenticationType": "none",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/browse/(.*)$",
+      "target": "/browse/$1",
+      "destination": "EMPUI5SERVICE",
+      "authenticationType": "none",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/sap/opu/(.*)$",
+      "target": "/sap/opu/$1",
+      "destination": "CFMS_DEV",
+      "authenticationType": "none",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/user-api(.*)",
+      "target": "$1",
+      "service": "sap-approuter-userapi"
+    },
+    {
       "source": "^/sap/(.*)$",
       "target": "/sap/$1",
       "destination": "ES5",

@@ -1,11 +1,16 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="ns.businesspartners.controller.Suppliers" displayBlock="true">
     <Page id="page" title="{i18n>title}">
         <content>
-            <List id="idListSupplier" headerText="{LocalModel>/ListTitle}" items="{/BusinessPartnerSet}" growing="true" growingThreshold="50" updateFinished="onUpdateFinished">
+            <!-- <List id="idListSupplier" headerText="{LocalModel>/ListTitle}" items="{/BusinessPartnerSet}" growing="true" growingThreshold="50" updateFinished="onUpdateFinished">
                 <items>
                     <StandardListItem id="idStandardListItems" title="{CompanyName}" description="{WebAddress}" />
                 </items>
-            </List>
+            </List> -->
         </content>
+        <footer>
+            <OverflowToolbar id="idOverflowToolbar1">
+                <Button id="idButton1" text="Load DMS Data" press="onPress" type="Emphasized"></Button>
+            </OverflowToolbar>
+        </footer>
     </Page>
 </mvc:View>
