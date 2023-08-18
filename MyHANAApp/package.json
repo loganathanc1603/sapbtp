@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@cap-js-community/odata-v2-adapter": "^1.11.6",
     "@sap/cds": "^6",
     "@sap/xssec": "^3",
     "express": "^4",
@@ -22,6 +23,9 @@
     "watch-interaction_header": "cds watch --open interaction_header/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
+    "cov2ap": {
+      "plugin": true
+    },
     "build": {
       "tasks": [
         {

@@ -3,8 +3,7 @@ using CatalogService as service from './interaction_srv';
 annotate service.Interactions_Header with @(UI: {
     LineItem                   : [
         {
-            $Type: 'UI.DataField',
-            
+            $Type: 'UI.DataField',            
             Value: ID,
         },
         {
