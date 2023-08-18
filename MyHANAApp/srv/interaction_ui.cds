@@ -4,6 +4,7 @@ annotate service.Interactions_Header with @(UI: {
     LineItem                   : [
         {
             $Type: 'UI.DataField',
+            
             Value: ID,
         },
         {
@@ -67,7 +68,7 @@ annotate service.Interactions_Header with @(UI: {
 }
 ) {
     ID        @(title: '{i18n>ID}');
-    LOG_DATE  @(title: 'Log Date');
-    PARTNER   @(title: 'Partner');
-    BPCOUNTRY @(title: 'Business Partner Country Code');
+    LOG_DATE  @(title: '{i18n>LOG_DATE}');
+    PARTNER   @(title: '{i18n>PARTNER}');
+    BPCOUNTRY @(title: '{i18n>BPCOUNTRY}');
 };
