@@ -1,3 +1,35 @@
-/mta_archives/
-/node_modules/
-/resources/
+# CAP MyHANAApp
+_out
+*.db
+*.sqlite
+connection.properties
+default-*.json
+.cdsrc-private.json
+gen/
+node_modules/
+target/
+
+# Web IDE, App Studio
+.che/
+.gen/
+
+# MTA
+*_mta_build_tmp
+*.mtar
+mta_archives/
+resources/
+*zip
+
+# Other
+.DS_Store
+*.orig
+*.log
+
+*.iml
+*.flattened-pom.xml
+*.cdsrc.json*
+*.cdsrc-private.json
+*core*
+# IDEs
+# .vscode
+# .idea

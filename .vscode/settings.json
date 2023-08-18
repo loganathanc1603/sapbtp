@@ -1,3 +1,5 @@
 {
-    "ApplicationWizard.TargetFolder": "/home/user/projects/SAPBTPDevelopment"
+    "ApplicationWizard.TargetFolder": "/home/user/projects/SAPBTPDevelopment",
+    "SAP HANA Database Explorer.displaySapWebAnalyticsStartupNotification": false,
+    "SAP HANA Database Explorer.enableSapWebAnalytics": false
 }

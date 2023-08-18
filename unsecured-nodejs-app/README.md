@@ -1,1 +1,0 @@
-SAP BTP unsecure node js application example
