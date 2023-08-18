@@ -1,5 +1,5 @@
 {
-  "welcomeFile": "/index.html",
+  "welcomeFile": "/index.html?sap-theme=sap_horizon_dark",
   "authenticationMethod": "route",
   "routes": [
     {

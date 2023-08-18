@@ -21,11 +21,90 @@ File or Folder | Purpose
 
 
 ## Learn More
-
 Learn more at https://cap.cloud.sap/docs/get-started/.
 
+## Combine CAP with SAP HANA Cloud to Create Full-Stack Application
+https://developers.sap.com/mission.hana-cloud-cap.html
 
-SAP Developer Tutorial
-https://developers.sap.com/tutorials/hana-cloud-cap-add-authentication.html
+## SAP VS Code End to End CAPM Aplication Development
 https://developers.sap.com/mission.btp-application-cap-e2e.html
+
+## CI/CD Tutorial
 https://developers.sap.com/tutorials/btp-app-ci-cd-btp.html
+
+## SAP Capire Hybrid Testing
+cds bind -2 MyHANAApp-dev:SharedDevKey
+cds watch --profile hybrid
+https://cap.cloud.sap/docs/advanced/hybrid-testing
+
+## Enabling OData v2 service in CAPM Application
+https://cap.cloud.sap/docs/advanced/odata#odata-v2-proxy-node
+
+## SAP Capire CDS Builds
+cds build
+https://cap.cloud.sap/docs/guides/deployment/custom-builds
+
+## SAP Standalone App Router
+cds add approuter
+
+## SAP CAPire services
+https://cap.cloud.sap/docs/node.js/core-services#srv-init
+
+## Important CLI commands
+cf login -u abc@gmail.com -p xxxxxxxx -a https://api.cf.us10-001.hana.ondemand.com -o xxxxxx999trial -s xxxdev
+
+cds compile srv/ --to xsuaa > xs-security.json
+
+cf create-service xsuaa application MyHANAApp-auth -c xs-security.json
+
+cf create-service-key MyHANAApp-auth default  
+
+cds init
+
+npm install --global @sap/cds-dk --@sap:registry=https://npmjs.org/
+
+cds add hana --for production
+
+cds add xsuaa --for production
+
+cds add mta
+
+mbt --version
+
+npm install --global mbt
+
+cf plugins
+
+cf install-plugin multiapps
+
+mbt build -t ./
+
+cf deploy MyHANAApp.0.0.mtar
+
+cf services
+
+cf apps
+
+npm install --global @sap/ux-ui5-tooling
+
+npm install --global @sap/generator-fiori
+
+npm install --global mta
+
+fiori add deploy-config cf
+
+cf logs --recent <appname>
+
+cf logs <appname>
+
+cf undeploy cpapp --delete-service-keys --delete-services
+
+cf undeploy cpapp
+
+
+
+
+
+
+
+

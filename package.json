@@ -1,8 +1,8 @@
 {
   "name": "MyHANAApp",
   "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
+  "description": "My HANA CAP project.",
+  "repository": "https://github.com/loganathanc1603/SAPBTPDevelopment.git",
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
