@@ -28,3 +28,4 @@ Learn more at https://cap.cloud.sap/docs/get-started/.
 SAP Developer Tutorial
 https://developers.sap.com/tutorials/hana-cloud-cap-add-authentication.html
 https://developers.sap.com/mission.btp-application-cap-e2e.html
+https://developers.sap.com/tutorials/btp-app-ci-cd-btp.html
