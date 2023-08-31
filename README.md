@@ -26,7 +26,7 @@ Learn more at https://cap.cloud.sap/docs/get-started/.
 ## Combine CAP with SAP HANA Cloud to Create Full-Stack Application
 https://developers.sap.com/mission.hana-cloud-cap.html
 
-## SAP VS Code End to End CAPM Aplication Development
+## Build an Application End-to-End Using CAP, Node.js and VS Code
 https://developers.sap.com/mission.btp-application-cap-e2e.html
 
 ## CI/CD Tutorial
@@ -40,7 +40,7 @@ https://cap.cloud.sap/docs/advanced/hybrid-testing
 ## Enabling OData v2 service in CAPM Application
 https://cap.cloud.sap/docs/advanced/odata#odata-v2-proxy-node
 
-## SAP Capire CDS Builds
+## SAP CAPire CDS Builds
 cds build
 https://cap.cloud.sap/docs/guides/deployment/custom-builds
 
