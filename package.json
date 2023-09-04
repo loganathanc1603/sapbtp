@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "cds watch hybrid": "cds watch --profile hybrid",
+    "cds-watch-hybrid": "cds watch --profile hybrid",
     "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
     "watch-interaction_items": "cds watch --open interaction_items/webapp/index.html?sap-ui-xx-viewCache=false",
     "undeploy": "cf undeploy MyHANAApp --delete-services --delete-service-keys --delete-service-brokers",

@@ -33,7 +33,7 @@ https://developers.sap.com/mission.btp-application-cap-e2e.html
 https://developers.sap.com/tutorials/btp-app-ci-cd-btp.html
 
 ## SAP Capire Hybrid Testing
-cds bind -2 MyHANAApp-dev:SharedDevKey
+cds bind -2  MyHANAApp-db:MyHANAApp-db-key
 cds watch --profile hybrid
 https://cap.cloud.sap/docs/advanced/hybrid-testing
 
