@@ -1,0 +1,11 @@
+---
+applications:
+- name: mynodeapp-job
+  random-route: true
+  host: myhost
+  path: app
+  memory: 64M
+  buildpack: nodejs_buildpack
+  services:
+    - btp-job-scheduler-xsuaa
+    - btp-job-scheduler
