@@ -3,11 +3,6 @@
   "tenant-mode": "dedicated",
   "scopes": [
     {
-      "name": "$XSAPPNAME.job",
-      "description": "SAP Job Scheduling service Scope",
-      "grant-as-authority-to-apps": ["$XSSERVICENAME(btp-job-scheduler)"]
-    },
-    {
       "name": "$XSAPPNAME.Admin",
       "description": "Admin"
     }
