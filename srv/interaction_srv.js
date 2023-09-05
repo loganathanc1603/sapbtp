@@ -37,7 +37,7 @@ class CatalogService extends cds.ApplicationService {
 
         this.before('CREATE', 'Interactions_Header', async (req) => {
             const { maxID } = await SELECT.one`max(ID) as maxID`.from(Interactions_Header);
-            req.data.ID = maxID;
+            req.data.ID = maxID + 1;
         });
 
         return super.init();
