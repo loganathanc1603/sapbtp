@@ -9,7 +9,6 @@ modules:
     requires:
       - name: MyHANAApp-db
       - name: MyHANAApp-auth
-      - name: btp-job-scheduler
     provides:
       - name: srv-api
         properties:
@@ -140,14 +139,6 @@ resources:
       service: application-logs
       service-plan: lite
     description: Log Resource
-  - name: btp-job-scheduler
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: jobscheduler
-      service-plan: lite
-      service-name: jobscheduler
-      config:
-      enable-xsuaa-support: true
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true
