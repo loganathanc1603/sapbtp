@@ -8,8 +8,8 @@ modules:
     path: gen/srv
     requires:
       - name: MyHANAApp-db
-      - name: MyHANAApp-auth
       - name: btp-job-scheduler
+      - name: MyHANAApp-auth      
     provides:
       - name: srv-api
         properties:
@@ -99,6 +99,14 @@ resources:
       service: hana
       service-plan: hdi-shared
     description: DB Resource
+  - name: btp-job-scheduler
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: jobscheduler
+      service-name: btp-job-scheduler
+      service-plan: lite      
+      config:
+      enable-xsuaa-support: true  
   - name: MyHANAApp-auth
     type: org.cloudfoundry.managed-service
     parameters:
@@ -140,14 +148,7 @@ resources:
       service: application-logs
       service-plan: lite
     description: Log Resource
-  - name: btp-job-scheduler
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: jobscheduler
-      service-name: btp-job-scheduler
-      service-plan: lite      
-      config:
-      enable-xsuaa-support: true
+ 
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true
