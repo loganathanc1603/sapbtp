@@ -24,7 +24,8 @@ File or Folder | Purpose
 Learn more at https://cap.cloud.sap/docs/get-started/.
 
 ## Combine CAP with SAP HANA Cloud to Create Full-Stack Application
-https://developers.sap.com/mission.hana-cloud-cap.html
+- https://developers.sap.com/mission.hana-cloud-cap.html
+- https://www.youtube.com/watch?v=yceqr9vycrs&t=247s
 
 ## Build an Application End-to-End Using CAP, Node.js and VS Code
 https://developers.sap.com/mission.btp-application-cap-e2e.html
@@ -33,9 +34,9 @@ https://developers.sap.com/mission.btp-application-cap-e2e.html
 https://developers.sap.com/tutorials/btp-app-ci-cd-btp.html
 
 ## SAP Capire Hybrid Testing
-cds bind -2  MyHANAApp-db:MyHANAApp-db-key
-cds watch --profile hybrid
-https://cap.cloud.sap/docs/advanced/hybrid-testing
+- cds bind -2  MyHANAApp-db:MyHANAApp-db-key
+- cds watch --profile hybrid
+- https://cap.cloud.sap/docs/advanced/hybrid-testing
 
 ## Enabling OData v2 service in CAPM Application
 https://cap.cloud.sap/docs/advanced/odata#odata-v2-proxy-node
@@ -46,6 +47,8 @@ https://cap.cloud.sap/docs/guides/deployment/custom-builds
 
 ## SAP Standalone App Router
 cds add approuter
+app:npm start --prefix app
+cds bind --exec npm run app
 
 ## SAP CAPire services
 https://cap.cloud.sap/docs/node.js/core-services#srv-init
@@ -63,8 +66,8 @@ https://blogs.sap.com/2022/12/08/sap-cap-function-and-action-with-unstructured-d
 https://blogs.sap.com/2021/06/16/how-to-implement-bound-functions-and-unbound-functions-in-sap-capm/
 
 ## Important GIT Commands
-git config --global user.name "YOUR_USER_NAME"
-git config --global user.email "YOUR_EMAIL"
+- git config --global user.name "YOUR_USER_NAME"
+- git config --global user.email "YOUR_EMAIL"
 
 ## Important CLI commands
 cf login -u abc@gmail.com -p xxxxxxxx -a https://api.cf.us10-001.hana.ondemand.com -o xxxxxx999trial -s xxxdev
@@ -78,6 +81,8 @@ cf create-service-key MyHANAApp-auth default
 cds init
 
 npm install --global @sap/cds-dk --@sap:registry=https://npmjs.org/
+
+cds deploy --to sqlite:db/myhanaapp 
 
 cds add hana --for production
 
