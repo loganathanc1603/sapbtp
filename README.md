@@ -50,6 +50,22 @@ cds add approuter
 ## SAP CAPire services
 https://cap.cloud.sap/docs/node.js/core-services#srv-init
 
+## Using the Job Scheduling Service
+https://learning.sap.com/learning-journey/develop-applications-running-on-sap-btp-using-sap-hana-cloud/using-the-job-scheduling-service_de5b160b-08ef-4b59-ba88-0a07d2bc54f0
+
+## Define and Grant Scopes to SAP Job Scheduling Service
+https://help.sap.com/docs/job-scheduling/sap-job-scheduling-service/define-and-grant-scopes-to-sap-job-scheduling-service?locale=en-US
+
+## SAP CAP function and action with Unstructured/Dynamic Type Input/Output
+https://blogs.sap.com/2022/12/08/sap-cap-function-and-action-with-unstructured-dynamic-type-input-output/
+
+## How to implement Bound functions and Unbound functions in SAP CAPM
+https://blogs.sap.com/2021/06/16/how-to-implement-bound-functions-and-unbound-functions-in-sap-capm/
+
+## Important GIT Commands
+git config --global user.name "YOUR_USER_NAME"
+git config --global user.email "YOUR_EMAIL"
+
 ## Important CLI commands
 cf login -u abc@gmail.com -p xxxxxxxx -a https://api.cf.us10-001.hana.ondemand.com -o xxxxxx999trial -s xxxdev
 
