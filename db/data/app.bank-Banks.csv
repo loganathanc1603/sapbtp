@@ -1,0 +1,2 @@
+BankUUID;BankID;BankName;Description;BankType_code;Headquarters;IsActive;RBIApproved;FoundedDate;CEOName;NoOfEmployees;CustomerCare;StockName;StockPrice;CurrencyCode_code;Revenue;Website;BankLogo;createdBy;createdAt
+20466922-7d57-4e76-b14c-e53fd97dcb11;00000001;Kotak Mahindra Bank;Kotak Mahindra Bank Limited is an Indian banking and financial services company headquartered in Mumbai.;PR;Mumbai;true;true;1985-11-06;Uday Kotak;100000;18602662666;KOTAKBANK;1787.00;INR;1000000.000;https://www.kotak.com/en/home.html;test.png;logu_c@live.com;2021-10-20T19:54:13Z;

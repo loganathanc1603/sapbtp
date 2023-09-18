@@ -8,8 +8,7 @@ modules:
     path: gen/srv
     requires:
       - name: MyHANAApp-db
-      - name: btp-job-scheduler
-      - name: MyHANAApp-auth      
+      - name: MyHANAApp-auth          
     provides:
       - name: srv-api
         properties:
@@ -21,7 +20,7 @@ modules:
     description: Service Module
   - name: MyHANAApp-db-deployer
     type: hdb
-    path: db
+    path: gen/db
     requires:
       - name: MyHANAApp-db
       - name: MyHANAApp-auth

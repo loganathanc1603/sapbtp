@@ -12,12 +12,26 @@ entity Interactions_Header {
   PARTNER  : BusinessKey;
   LOG_DATE  : SDate;
   BPCOUNTRY : Country;
-
 };
+
+annotate Interactions_Header with@(
+  Capabilities:{
+    FilterRestrictions : {
+       FilterExpressionRestrictions :[{
+        Property: 'LOG_DATE',
+        AllowedExpressions: 'SingleRange'
+       }]        
+    }
+  }
+);
+
 entity Interactions_Items {
     key INTHeader : association to Interactions_Header;
     key TEXT_ID : BusinessKey;
         LANGU   : String(2);
         LOGTEXT : LText;
 };
+
+
+
 

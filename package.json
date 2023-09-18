@@ -24,20 +24,15 @@
     "app": "npm start --prefix app",
     "watch-interaction_header": "cds watch --open interaction_header/webapp/index.html?sap-ui-xx-viewCache=false"
   },
+  "log": {
+    "service": true
+  },
+  "features": {
+    "preserve_computed": true
+  },
   "cds": {
     "cov2ap": {
       "plugin": true
-    },
-    "build": {
-      "tasks": [
-        {
-          "for": "hana",
-          "dest": "../db"
-        },
-        {
-          "for": "node-cf"
-        }
-      ]
     },
     "requires": {
       "db": {
@@ -50,29 +45,27 @@
         "auth": {
           "kind": "xsuaa"
         }
-      },
-      "[development]": {
-        "auth": {
-          "kind": "dummy-auth",
-          "users": {
-            "rose": {
-              "password": "rose",
-              "roles": []
-            },
-            "martha": {
-              "password": "martha",
-              "roles": [
-                "Admin"
-              ]
-            },
-            "amy": {
-              "password": "amy",
-              "roles": [
-                "processor"
-              ]
-            }
+      }
+    },
+    "build": {
+      "[node]": {
+        "target": "gen",
+        "tasks": [
+          {
+            "for": "node-cf"
+          },
+          {
+            "for": "hana"
           }
-        }
+        ]
+      },
+      "[hana]": {
+        "target": "gen",
+        "tasks": [
+          {
+            "for": "hana"
+          }
+        ]
       }
     }
   },

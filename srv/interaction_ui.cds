@@ -125,6 +125,6 @@ annotate service.Interactions_Items with @(UI: {
 }) {
     INTHeader @(title: '{i18n>ID}');
     TEXT_ID @(title: '{i18n>TEXT_ID}');
-    LANGU   @(title: '{i18n>LANGU}');
-    LOGTEXT @(title: '{i18n>LOGTEXT}')
+    LANGU   @(title: '{i18n>LANG}');
+    LOGTEXT @(title: '{i18n>LONG_TEXT}')
 };
