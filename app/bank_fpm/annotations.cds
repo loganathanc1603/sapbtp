@@ -1,0 +1,1 @@
+using BankService as service from '../../srv/bank_srv';

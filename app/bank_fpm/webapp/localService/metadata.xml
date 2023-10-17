@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Validation.V1.xml">
+        <edmx:Include Alias="Validation" Namespace="Org.OData.Validation.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="BankService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="Banks" EntityType="BankService.Banks">
+                    <NavigationPropertyBinding Path="BankType" Target="BankType"/>
+                    <NavigationPropertyBinding Path="CurrencyCode" Target="Currencies"/>
+                    <NavigationPropertyBinding Path="to_Branch" Target="Branches"/>
+                    <NavigationPropertyBinding Path="SiblingEntity" Target="Banks"/>
+                </EntitySet>
+                <EntitySet Name="Branches" EntityType="BankService.Branches">
+                    <NavigationPropertyBinding Path="CountryCode" Target="Countries"/>
+                    <NavigationPropertyBinding Path="to_Bank" Target="Banks"/>
+                    <NavigationPropertyBinding Path="SiblingEntity" Target="Branches"/>
+                </EntitySet>
+                <EntitySet Name="BankType" EntityType="BankService.BankType">
+                    <NavigationPropertyBinding Path="texts" Target="BankType_texts"/>
+                    <NavigationPropertyBinding Path="localized" Target="BankType_texts"/>
+                </EntitySet>
+                <EntitySet Name="Currencies" EntityType="BankService.Currencies">
+                    <NavigationPropertyBinding Path="texts" Target="Currencies_texts"/>
+                    <NavigationPropertyBinding Path="localized" Target="Currencies_texts"/>
+                </EntitySet>
+                <EntitySet Name="Countries" EntityType="BankService.Countries">
+                    <NavigationPropertyBinding Path="texts" Target="Countries_texts"/>
+                    <NavigationPropertyBinding Path="localized" Target="Countries_texts"/>
+                </EntitySet>
+                <EntitySet Name="BankType_texts" EntityType="BankService.BankType_texts"/>
+                <EntitySet Name="Currencies_texts" EntityType="BankService.Currencies_texts"/>
+                <EntitySet Name="Countries_texts" EntityType="BankService.Countries_texts"/>
+            </EntityContainer>
+            <EntityType Name="Banks">
+                <Key>
+                    <PropertyRef Name="BankUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="BankUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="BankID" Type="Edm.Int32"/>
+                <Property Name="BankName" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="1024"/>
+                <NavigationProperty Name="BankType" Type="BankService.BankType">
+                    <ReferentialConstraint Property="BankType_code" ReferencedProperty="code"/>
+                </NavigationProperty>
+                <Property Name="BankType_code" Type="Edm.String" DefaultValue="PR"/>
+                <Property Name="Headquarters" Type="Edm.String"/>
+                <Property Name="IsActive" Type="Edm.Boolean"/>
+                <Property Name="RBIApproved" Type="Edm.Boolean"/>
+                <Property Name="FoundedDate" Type="Edm.Date"/>
+                <Property Name="CEOName" Type="Edm.String"/>
+                <Property Name="NoOfEmployees" Type="Edm.Int32"/>
+                <Property Name="CustomerCare" Type="Edm.String" MaxLength="30"/>
+                <Property Name="StockName" Type="Edm.String" MaxLength="50"/>
+                <Property Name="StockPrice" Type="Edm.Decimal" Scale="3" Precision="16"/>
+                <NavigationProperty Name="CurrencyCode" Type="BankService.Currencies">
+                    <ReferentialConstraint Property="CurrencyCode_code" ReferencedProperty="code"/>
+                </NavigationProperty>
+                <Property Name="CurrencyCode_code" Type="Edm.String" MaxLength="3"/>
+                <Property Name="Revenue" Type="Edm.Decimal" Scale="3" Precision="16"/>
+                <Property Name="Website" Type="Edm.String" MaxLength="100"/>
+                <Property Name="BankLogo" Type="Edm.String"/>
+                <NavigationProperty Name="to_Branch" Type="Collection(BankService.Branches)" Partner="to_Bank">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="true"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Type="BankService.DraftAdministrativeData" ContainsTarget="true"/>
+                <NavigationProperty Name="SiblingEntity" Type="BankService.Banks"/>
+            </EntityType>
+            <EntityType Name="Branches">
+                <Key>
+                    <PropertyRef Name="BranchUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="BranchUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="BranchCode" Type="Edm.Int32"/>
+                <Property Name="BranchName" Type="Edm.String" MaxLength="100"/>
+                <Property Name="FullAddress" Type="Edm.String" MaxLength="1024"/>
+                <Property Name="City" Type="Edm.String" MaxLength="100"/>
+                <Property Name="State" Type="Edm.String" MaxLength="50"/>
+                <NavigationProperty Name="CountryCode" Type="BankService.Countries">
+                    <ReferentialConstraint Property="CountryCode_code" ReferencedProperty="code"/>
+                </NavigationProperty>
+                <Property Name="CountryCode_code" Type="Edm.String" MaxLength="3"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="50"/>
+                <Property Name="IFSC" Type="Edm.String" MaxLength="20"/>
+                <Property Name="MICRCode" Type="Edm.String" MaxLength="20"/>
+                <Property Name="PhoneNo" Type="Edm.String" MaxLength="20"/>
+                <NavigationProperty Name="to_Bank" Type="BankService.Banks" Partner="to_Branch">
+                    <ReferentialConstraint Property="to_Bank_BankUUID" ReferencedProperty="BankUUID"/>
+                </NavigationProperty>
+                <Property Name="to_Bank_BankUUID" Type="Edm.Guid"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="true"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Type="BankService.DraftAdministrativeData" ContainsTarget="true"/>
+                <NavigationProperty Name="SiblingEntity" Type="BankService.Branches"/>
+            </EntityType>
+            <EntityType Name="BankType">
+                <Key>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" Nullable="false" DefaultValue="PR"/>
+                <NavigationProperty Name="texts" Type="Collection(BankService.BankType_texts)">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <NavigationProperty Name="localized" Type="BankService.BankType_texts">
+                    <ReferentialConstraint Property="code" ReferencedProperty="code"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="Currencies">
+                <Key>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <Property Name="symbol" Type="Edm.String" MaxLength="5"/>
+                <Property Name="minorUnit" Type="Edm.Int16"/>
+                <NavigationProperty Name="texts" Type="Collection(BankService.Currencies_texts)">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <NavigationProperty Name="localized" Type="BankService.Currencies_texts">
+                    <ReferentialConstraint Property="code" ReferencedProperty="code"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="Countries">
+                <Key>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <NavigationProperty Name="texts" Type="Collection(BankService.Countries_texts)">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <NavigationProperty Name="localized" Type="BankService.Countries_texts">
+                    <ReferentialConstraint Property="code" ReferencedProperty="code"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="DraftAdministrativeData">
+                <Key>
+                    <PropertyRef Name="DraftUUID"/>
+                </Key>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="256"/>
+                <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="256"/>
+                <Property Name="InProcessByUser" Type="Edm.String" MaxLength="256"/>
+                <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean"/>
+            </EntityType>
+            <EntityType Name="BankType_texts">
+                <Key>
+                    <PropertyRef Name="locale"/>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="locale" Type="Edm.String" MaxLength="14" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" Nullable="false" DefaultValue="PR"/>
+            </EntityType>
+            <EntityType Name="Currencies_texts">
+                <Key>
+                    <PropertyRef Name="locale"/>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="locale" Type="Edm.String" MaxLength="14" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="3" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="Countries_texts">
+                <Key>
+                    <PropertyRef Name="locale"/>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="locale" Type="Edm.String" MaxLength="14" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="3" Nullable="false"/>
+            </EntityType>
+            <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="BankService.Banks"/>
+                <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+                <ReturnType Type="BankService.Banks"/>
+            </Action>
+            <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="BankService.Branches"/>
+                <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+                <ReturnType Type="BankService.Branches"/>
+            </Action>
+            <Action Name="draftActivate" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="BankService.Banks"/>
+                <ReturnType Type="BankService.Banks"/>
+            </Action>
+            <Action Name="draftEdit" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="BankService.Banks"/>
+                <Parameter Name="PreserveChanges" Type="Edm.Boolean"/>
+                <ReturnType Type="BankService.Banks"/>
+            </Action>
+            <Annotations Target="BankService.Banks">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>BankUUID</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="BankID"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="BankName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Description"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CEOName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="FoundedDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Headquarters"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>BankName</PropertyPath>
+                        <PropertyPath>FoundedDate</PropertyPath>
+                        <PropertyPath>CEOName</PropertyPath>
+                        <PropertyPath>CurrencyCode_code</PropertyPath>
+                        <PropertyPath>IsActive</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="GeneralInformation1">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="BankID"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="BankName"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Description"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="BankType/descr"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="BankID"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="GeneralInformation2">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="CEOName"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Headquarters"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="RBIApproved"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="FoundedDate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="IsActive"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="GeneralInformation3">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="NoOfEmployees"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="CustomerCare"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="StockName"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="StockPrice"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="CurrencyCode/code"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="BankService.EntityContainer/Banks">
+                <Annotation Term="Common.DraftRoot">
+                    <Record Type="Common.DraftRootType">
+                        <PropertyValue Property="ActivationAction" String="BankService.draftActivate"/>
+                        <PropertyValue Property="EditAction" String="BankService.draftEdit"/>
+                        <PropertyValue Property="PreparationAction" String="BankService.draftPrepare"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="BankService.Banks/createdAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                </Annotations>
+                <Annotations Target="BankService.Banks/createdBy">
+                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                    <Annotation Term="Core.Immutable" Bool="true"/>
+                    <Annotation Term="Core.Computed" Bool="true"/>
+                    <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                        <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                        </Annotations>
+                        <Annotations Target="BankService.Banks/modifiedAt">
+                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                            <Annotation Term="Core.Computed" Bool="true"/>
+                            <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                            </Annotations>
+                            <Annotations Target="BankService.Banks/modifiedBy">
+                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                <Annotation Term="Core.Computed" Bool="true"/>
+                                <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                    <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                    </Annotations>
+                                    <Annotations Target="BankService.Banks/BankID">
+                                        <Annotation Term="Core.Computed" Bool="true"/>
+                                        <Annotation Term="Common.Label" String="{i18n>BANK_ID}"/>
+                                        </Annotations>
+                                        <Annotations Target="BankService.Banks/BankName">
+                                            <Annotation Term="Common.Label" String="{i18n>BANK_NAME}"/>
+                                            </Annotations>
+                                            <Annotations Target="BankService.Banks/Description">
+                                                <Annotation Term="Common.Label" String="{i18n>BANK_DESC}"/>
+                                                </Annotations>
+                                                <Annotations Target="BankService.Banks/BankType">
+                                                    <Annotation Term="Common.Label" String="{i18n>BANK_TYPE}"/>
+                                                    </Annotations>
+                                                    <Annotations Target="BankService.Banks/BankType_code">
+                                                        <Annotation Term="Common.Label" String="{i18n>BANK_TYPE}"/>
+                                                            <Annotation Term="Common.ValueList">
+                                                                <Record Type="Common.ValueListType">
+                                                                    <PropertyValue Property="Label" String="{i18n>BANK_TYPE}"/>
+                                                                        <PropertyValue Property="CollectionPath" String="BankType"/>
+                                                                        <PropertyValue Property="Parameters">
+                                                                            <Collection>
+                                                                                <Record Type="Common.ValueListParameterInOut">
+                                                                                    <PropertyValue Property="LocalDataProperty" PropertyPath="BankType_code"/>
+                                                                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                                                                </Record>
+                                                                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                                                                    <PropertyValue Property="ValueListProperty" String="name"/>
+                                                                                </Record>
+                                                                            </Collection>
+                                                                        </PropertyValue>
+                                                                    </Record>
+                                                                </Annotation>
+                                                            </Annotations>
+                                                            <Annotations Target="BankService.Banks/Headquarters">
+                                                                <Annotation Term="Common.Label" String="{i18n>BANK_HQ}"/>
+                                                                </Annotations>
+                                                                <Annotations Target="BankService.Banks/IsActive">
+                                                                    <Annotation Term="Common.Label" String="{i18n>BANK_ACTIVE}"/>
+                                                                    </Annotations>
+                                                                    <Annotations Target="BankService.Banks/RBIApproved">
+                                                                        <Annotation Term="Common.Label" String="{i18n>RBI_APPROVED}"/>
+                                                                        </Annotations>
+                                                                        <Annotations Target="BankService.Banks/FoundedDate">
+                                                                            <Annotation Term="Common.Label" String="{i18n>FOUNDED_DATE}"/>
+                                                                            </Annotations>
+                                                                            <Annotations Target="BankService.Banks/CEOName">
+                                                                                <Annotation Term="Common.Label" String="{i18n>BANK_CEO_NAME}"/>
+                                                                                </Annotations>
+                                                                                <Annotations Target="BankService.Banks/NoOfEmployees">
+                                                                                    <Annotation Term="Common.Label" String="{i18n>NO_OF_EMPLOYEES}"/>
+                                                                                    </Annotations>
+                                                                                    <Annotations Target="BankService.Banks/CustomerCare">
+                                                                                        <Annotation Term="Common.Label" String="{i18n>CUSTOMER_CARE}"/>
+                                                                                        </Annotations>
+                                                                                        <Annotations Target="BankService.Banks/StockName">
+                                                                                            <Annotation Term="Common.Label" String="{i18n>STOCK_NAME}"/>
+                                                                                            </Annotations>
+                                                                                            <Annotations Target="BankService.Banks/CurrencyCode">
+                                                                                                <Annotation Term="Common.Label" String="{i18n>Currency}"/>
+                                                                                                    <Annotation Term="Core.Description" String="{i18n>CurrencyCode.Description}"/>
+                                                                                                    </Annotations>
+                                                                                                    <Annotations Target="BankService.Banks/CurrencyCode_code">
+                                                                                                        <Annotation Term="Common.Label" String="{i18n>Currency}"/>
+                                                                                                            <Annotation Term="Common.ValueList">
+                                                                                                                <Record Type="Common.ValueListType">
+                                                                                                                    <PropertyValue Property="Label" String="{i18n>Currency}"/>
+                                                                                                                        <PropertyValue Property="CollectionPath" String="Currencies"/>
+                                                                                                                        <PropertyValue Property="Parameters">
+                                                                                                                            <Collection>
+                                                                                                                                <Record Type="Common.ValueListParameterInOut">
+                                                                                                                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CurrencyCode_code"/>
+                                                                                                                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                                                                                                                </Record>
+                                                                                                                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                                                                                                                    <PropertyValue Property="ValueListProperty" String="name"/>
+                                                                                                                                </Record>
+                                                                                                                            </Collection>
+                                                                                                                        </PropertyValue>
+                                                                                                                    </Record>
+                                                                                                                </Annotation>
+                                                                                                                <Annotation Term="Core.Description" String="{i18n>CurrencyCode.Description}"/>
+                                                                                                                </Annotations>
+                                                                                                                <Annotations Target="BankService.Banks/BankLogo">
+                                                                                                                    <Annotation Term="UI.IsImageURL" Bool="true"/>
+                                                                                                                </Annotations>
+                                                                                                                <Annotations Target="BankService.Banks/IsActiveEntity">
+                                                                                                                    <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                                                </Annotations>
+                                                                                                                <Annotations Target="BankService.Banks/HasActiveEntity">
+                                                                                                                    <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                                                </Annotations>
+                                                                                                                <Annotations Target="BankService.Banks/HasDraftEntity">
+                                                                                                                    <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                                                </Annotations>
+                                                                                                                <Annotations Target="BankService.Banks/DraftAdministrativeData">
+                                                                                                                    <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                                                </Annotations>
+                                                                                                                <Annotations Target="BankService.EntityContainer/Branches">
+                                                                                                                    <Annotation Term="Common.DraftNode">
+                                                                                                                        <Record Type="Common.DraftNodeType">
+                                                                                                                            <PropertyValue Property="PreparationAction" String="BankService.draftPrepare"/>
+                                                                                                                        </Record>
+                                                                                                                    </Annotation>
+                                                                                                                </Annotations>
+                                                                                                                <Annotations Target="BankService.Branches/createdAt">
+                                                                                                                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                    <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                                                                    <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                    <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                                                                                                                    </Annotations>
+                                                                                                                    <Annotations Target="BankService.Branches/createdBy">
+                                                                                                                        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                        <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                                                                        <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                        <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                                                            <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                                                                                                                            </Annotations>
+                                                                                                                            <Annotations Target="BankService.Branches/modifiedAt">
+                                                                                                                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                                <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                                <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                                                                                                                                </Annotations>
+                                                                                                                                <Annotations Target="BankService.Branches/modifiedBy">
+                                                                                                                                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                                    <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                                    <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                                                                        <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                                                                                                                        </Annotations>
+                                                                                                                                        <Annotations Target="BankService.Branches/CountryCode">
+                                                                                                                                            <Annotation Term="Common.Label" String="{i18n>Country}"/>
+                                                                                                                                                <Annotation Term="Core.Description" String="{i18n>CountryCode.Description}"/>
+                                                                                                                                                </Annotations>
+                                                                                                                                                <Annotations Target="BankService.Branches/CountryCode_code">
+                                                                                                                                                    <Annotation Term="Common.Label" String="{i18n>Country}"/>
+                                                                                                                                                        <Annotation Term="Common.ValueList">
+                                                                                                                                                            <Record Type="Common.ValueListType">
+                                                                                                                                                                <PropertyValue Property="Label" String="{i18n>Country}"/>
+                                                                                                                                                                    <PropertyValue Property="CollectionPath" String="Countries"/>
+                                                                                                                                                                    <PropertyValue Property="Parameters">
+                                                                                                                                                                        <Collection>
+                                                                                                                                                                            <Record Type="Common.ValueListParameterInOut">
+                                                                                                                                                                                <PropertyValue Property="LocalDataProperty" PropertyPath="CountryCode_code"/>
+                                                                                                                                                                                <PropertyValue Property="ValueListProperty" String="code"/>
+                                                                                                                                                                            </Record>
+                                                                                                                                                                            <Record Type="Common.ValueListParameterDisplayOnly">
+                                                                                                                                                                                <PropertyValue Property="ValueListProperty" String="name"/>
+                                                                                                                                                                            </Record>
+                                                                                                                                                                        </Collection>
+                                                                                                                                                                    </PropertyValue>
+                                                                                                                                                                </Record>
+                                                                                                                                                            </Annotation>
+                                                                                                                                                            <Annotation Term="Core.Description" String="{i18n>CountryCode.Description}"/>
+                                                                                                                                                            </Annotations>
+                                                                                                                                                            <Annotations Target="BankService.Branches/IsActiveEntity">
+                                                                                                                                                                <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                                                                                            </Annotations>
+                                                                                                                                                            <Annotations Target="BankService.Branches/HasActiveEntity">
+                                                                                                                                                                <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                                                                                            </Annotations>
+                                                                                                                                                            <Annotations Target="BankService.Branches/HasDraftEntity">
+                                                                                                                                                                <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                                                                                            </Annotations>
+                                                                                                                                                            <Annotations Target="BankService.Branches/DraftAdministrativeData">
+                                                                                                                                                                <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                                                                                            </Annotations>
+                                                                                                                                                            <Annotations Target="BankService.BankType">
+                                                                                                                                                                <Annotation Term="UI.Identification">
+                                                                                                                                                                    <Collection>
+                                                                                                                                                                        <Record Type="UI.DataField">
+                                                                                                                                                                            <PropertyValue Property="Value" Path="name"/>
+                                                                                                                                                                        </Record>
+                                                                                                                                                                    </Collection>
+                                                                                                                                                                </Annotation>
+                                                                                                                                                            </Annotations>
+                                                                                                                                                            <Annotations Target="BankService.BankType/name">
+                                                                                                                                                                <Annotation Term="Common.Label" String="{i18n>Name}"/>
+                                                                                                                                                                </Annotations>
+                                                                                                                                                                <Annotations Target="BankService.BankType/descr">
+                                                                                                                                                                    <Annotation Term="Common.Label" String="{i18n>Description}"/>
+                                                                                                                                                                    </Annotations>
+                                                                                                                                                                    <Annotations Target="BankService.BankType/code">
+                                                                                                                                                                        <Annotation Term="Validation.AllowedValues">
+                                                                                                                                                                            <Collection>
+                                                                                                                                                                                <Record Type="Validation.AllowedValue">
+                                                                                                                                                                                    <Annotation Term="Core.SymbolicName" String="Public"/>
+                                                                                                                                                                                    <PropertyValue Property="Value" String="PU"/>
+                                                                                                                                                                                </Record>
+                                                                                                                                                                                <Record Type="Validation.AllowedValue">
+                                                                                                                                                                                    <Annotation Term="Core.SymbolicName" String="Private"/>
+                                                                                                                                                                                    <PropertyValue Property="Value" String="PR"/>
+                                                                                                                                                                                </Record>
+                                                                                                                                                                                <Record Type="Validation.AllowedValue">
+                                                                                                                                                                                    <Annotation Term="Core.SymbolicName" String="Trust"/>
+                                                                                                                                                                                    <PropertyValue Property="Value" String="TR"/>
+                                                                                                                                                                                </Record>
+                                                                                                                                                                            </Collection>
+                                                                                                                                                                        </Annotation>
+                                                                                                                                                                    </Annotations>
+                                                                                                                                                                    <Annotations Target="BankService.Currencies">
+                                                                                                                                                                        <Annotation Term="UI.Identification">
+                                                                                                                                                                            <Collection>
+                                                                                                                                                                                <Record Type="UI.DataField">
+                                                                                                                                                                                    <PropertyValue Property="Value" Path="name"/>
+                                                                                                                                                                                </Record>
+                                                                                                                                                                            </Collection>
+                                                                                                                                                                        </Annotation>
+                                                                                                                                                                    </Annotations>
+                                                                                                                                                                    <Annotations Target="BankService.Currencies/name">
+                                                                                                                                                                        <Annotation Term="Common.Label" String="{i18n>Name}"/>
+                                                                                                                                                                        </Annotations>
+                                                                                                                                                                        <Annotations Target="BankService.Currencies/descr">
+                                                                                                                                                                            <Annotation Term="Common.Label" String="{i18n>Description}"/>
+                                                                                                                                                                            </Annotations>
+                                                                                                                                                                            <Annotations Target="BankService.Currencies/code">
+                                                                                                                                                                                <Annotation Term="Common.Text" Path="name"/>
+                                                                                                                                                                                <Annotation Term="Common.Label" String="{i18n>CurrencyCode}"/>
+                                                                                                                                                                                </Annotations>
+                                                                                                                                                                                <Annotations Target="BankService.Currencies/symbol">
+                                                                                                                                                                                    <Annotation Term="Common.Label" String="{i18n>CurrencySymbol}"/>
+                                                                                                                                                                                    </Annotations>
+                                                                                                                                                                                    <Annotations Target="BankService.Currencies/minorUnit">
+                                                                                                                                                                                        <Annotation Term="Common.Label" String="{i18n>CurrencyMinorUnit}"/>
+                                                                                                                                                                                        </Annotations>
+                                                                                                                                                                                        <Annotations Target="BankService.Countries">
+                                                                                                                                                                                            <Annotation Term="UI.Identification">
+                                                                                                                                                                                                <Collection>
+                                                                                                                                                                                                    <Record Type="UI.DataField">
+                                                                                                                                                                                                        <PropertyValue Property="Value" Path="name"/>
+                                                                                                                                                                                                    </Record>
+                                                                                                                                                                                                </Collection>
+                                                                                                                                                                                            </Annotation>
+                                                                                                                                                                                        </Annotations>
+                                                                                                                                                                                        <Annotations Target="BankService.Countries/name">
+                                                                                                                                                                                            <Annotation Term="Common.Label" String="{i18n>Name}"/>
+                                                                                                                                                                                            </Annotations>
+                                                                                                                                                                                            <Annotations Target="BankService.Countries/descr">
+                                                                                                                                                                                                <Annotation Term="Common.Label" String="{i18n>Description}"/>
+                                                                                                                                                                                                </Annotations>
+                                                                                                                                                                                                <Annotations Target="BankService.Countries/code">
+                                                                                                                                                                                                    <Annotation Term="Common.Text" Path="name"/>
+                                                                                                                                                                                                    <Annotation Term="Common.Label" String="{i18n>CountryCode}"/>
+                                                                                                                                                                                                    </Annotations>
+                                                                                                                                                                                                    <Annotations Target="BankService.DraftAdministrativeData">
+                                                                                                                                                                                                        <Annotation Term="Common.Label" String="{i18n>Draft_DraftAdministrativeData}"/>
+                                                                                                                                                                                                        </Annotations>
+                                                                                                                                                                                                        <Annotations Target="BankService.DraftAdministrativeData/DraftUUID">
+                                                                                                                                                                                                            <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                                                                                                                                            <Annotation Term="Common.Label" String="{i18n>Draft_DraftUUID}"/>
+                                                                                                                                                                                                            </Annotations>
+                                                                                                                                                                                                            <Annotations Target="BankService.DraftAdministrativeData/CreationDateTime">
+                                                                                                                                                                                                                <Annotation Term="Common.Label" String="{i18n>Draft_CreationDateTime}"/>
+                                                                                                                                                                                                                </Annotations>
+                                                                                                                                                                                                                <Annotations Target="BankService.DraftAdministrativeData/CreatedByUser">
+                                                                                                                                                                                                                    <Annotation Term="Common.Label" String="{i18n>Draft_CreatedByUser}"/>
+                                                                                                                                                                                                                    </Annotations>
+                                                                                                                                                                                                                    <Annotations Target="BankService.DraftAdministrativeData/DraftIsCreatedByMe">
+                                                                                                                                                                                                                        <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                                                                                                                                                        <Annotation Term="Common.Label" String="{i18n>Draft_DraftIsCreatedByMe}"/>
+                                                                                                                                                                                                                        </Annotations>
+                                                                                                                                                                                                                        <Annotations Target="BankService.DraftAdministrativeData/LastChangeDateTime">
+                                                                                                                                                                                                                            <Annotation Term="Common.Label" String="{i18n>Draft_LastChangeDateTime}"/>
+                                                                                                                                                                                                                            </Annotations>
+                                                                                                                                                                                                                            <Annotations Target="BankService.DraftAdministrativeData/LastChangedByUser">
+                                                                                                                                                                                                                                <Annotation Term="Common.Label" String="{i18n>Draft_LastChangedByUser}"/>
+                                                                                                                                                                                                                                </Annotations>
+                                                                                                                                                                                                                                <Annotations Target="BankService.DraftAdministrativeData/InProcessByUser">
+                                                                                                                                                                                                                                    <Annotation Term="Common.Label" String="{i18n>Draft_InProcessByUser}"/>
+                                                                                                                                                                                                                                    </Annotations>
+                                                                                                                                                                                                                                    <Annotations Target="BankService.DraftAdministrativeData/DraftIsProcessedByMe">
+                                                                                                                                                                                                                                        <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                                                                                                                                                                        <Annotation Term="Common.Label" String="{i18n>Draft_DraftIsProcessedByMe}"/>
+                                                                                                                                                                                                                                        </Annotations>
+                                                                                                                                                                                                                                        <Annotations Target="BankService.BankType_texts/locale">
+                                                                                                                                                                                                                                            <Annotation Term="Common.Label" String="{i18n>LanguageCode}"/>
+                                                                                                                                                                                                                                            </Annotations>
+                                                                                                                                                                                                                                            <Annotations Target="BankService.BankType_texts/name">
+                                                                                                                                                                                                                                                <Annotation Term="Common.Label" String="{i18n>Name}"/>
+                                                                                                                                                                                                                                                </Annotations>
+                                                                                                                                                                                                                                                <Annotations Target="BankService.BankType_texts/descr">
+                                                                                                                                                                                                                                                    <Annotation Term="Common.Label" String="{i18n>Description}"/>
+                                                                                                                                                                                                                                                    </Annotations>
+                                                                                                                                                                                                                                                    <Annotations Target="BankService.BankType_texts/code">
+                                                                                                                                                                                                                                                        <Annotation Term="Validation.AllowedValues">
+                                                                                                                                                                                                                                                            <Collection>
+                                                                                                                                                                                                                                                                <Record Type="Validation.AllowedValue">
+                                                                                                                                                                                                                                                                    <Annotation Term="Core.SymbolicName" String="Public"/>
+                                                                                                                                                                                                                                                                    <PropertyValue Property="Value" String="PU"/>
+                                                                                                                                                                                                                                                                </Record>
+                                                                                                                                                                                                                                                                <Record Type="Validation.AllowedValue">
+                                                                                                                                                                                                                                                                    <Annotation Term="Core.SymbolicName" String="Private"/>
+                                                                                                                                                                                                                                                                    <PropertyValue Property="Value" String="PR"/>
+                                                                                                                                                                                                                                                                </Record>
+                                                                                                                                                                                                                                                                <Record Type="Validation.AllowedValue">
+                                                                                                                                                                                                                                                                    <Annotation Term="Core.SymbolicName" String="Trust"/>
+                                                                                                                                                                                                                                                                    <PropertyValue Property="Value" String="TR"/>
+                                                                                                                                                                                                                                                                </Record>
+                                                                                                                                                                                                                                                            </Collection>
+                                                                                                                                                                                                                                                        </Annotation>
+                                                                                                                                                                                                                                                    </Annotations>
+                                                                                                                                                                                                                                                    <Annotations Target="BankService.Currencies_texts/locale">
+                                                                                                                                                                                                                                                        <Annotation Term="Common.Label" String="{i18n>LanguageCode}"/>
+                                                                                                                                                                                                                                                        </Annotations>
+                                                                                                                                                                                                                                                        <Annotations Target="BankService.Currencies_texts/name">
+                                                                                                                                                                                                                                                            <Annotation Term="Common.Label" String="{i18n>Name}"/>
+                                                                                                                                                                                                                                                            </Annotations>
+                                                                                                                                                                                                                                                            <Annotations Target="BankService.Currencies_texts/descr">
+                                                                                                                                                                                                                                                                <Annotation Term="Common.Label" String="{i18n>Description}"/>
+                                                                                                                                                                                                                                                                </Annotations>
+                                                                                                                                                                                                                                                                <Annotations Target="BankService.Currencies_texts/code">
+                                                                                                                                                                                                                                                                    <Annotation Term="Common.Text" Path="name"/>
+                                                                                                                                                                                                                                                                    <Annotation Term="Common.Label" String="{i18n>CurrencyCode}"/>
+                                                                                                                                                                                                                                                                    </Annotations>
+                                                                                                                                                                                                                                                                    <Annotations Target="BankService.Countries_texts/locale">
+                                                                                                                                                                                                                                                                        <Annotation Term="Common.Label" String="{i18n>LanguageCode}"/>
+                                                                                                                                                                                                                                                                        </Annotations>
+                                                                                                                                                                                                                                                                        <Annotations Target="BankService.Countries_texts/name">
+                                                                                                                                                                                                                                                                            <Annotation Term="Common.Label" String="{i18n>Name}"/>
+                                                                                                                                                                                                                                                                            </Annotations>
+                                                                                                                                                                                                                                                                            <Annotations Target="BankService.Countries_texts/descr">
+                                                                                                                                                                                                                                                                                <Annotation Term="Common.Label" String="{i18n>Description}"/>
+                                                                                                                                                                                                                                                                                </Annotations>
+                                                                                                                                                                                                                                                                                <Annotations Target="BankService.Countries_texts/code">
+                                                                                                                                                                                                                                                                                    <Annotation Term="Common.Text" Path="name"/>
+                                                                                                                                                                                                                                                                                    <Annotation Term="Common.Label" String="{i18n>CountryCode}"/>
+                                                                                                                                                                                                                                                                                    </Annotations>
+                                                                                                                                                                                                                                                                                </Schema>
+                                                                                                                                                                                                                                                                            </edmx:DataServices>
+                                                                                                                                                                                                                                                                        </edmx:Edmx>

@@ -1,80 +1,86 @@
 {
-  "name": "MyHANAApp",
-  "version": "1.0.0",
-  "description": "My HANA CAP project.",
-  "repository": "https://github.com/loganathanc1603/SAPBTPDevelopment.git",
-  "license": "UNLICENSED",
-  "private": true,
-  "dependencies": {
-    "@cap-js-community/odata-v2-adapter": "^1.11.6",
-    "@sap/cds": "^6",
-    "@sap/xssec": "^3",
-    "express": "^4",
-    "hdb": "^0.19.0",
-    "passport": "^0.6.0",
-    "sqlite3": "^5.1.6"
-  },
-  "scripts": {
-    "start": "cds-serve",
-    "cds-watch-hybrid": "cds watch --profile hybrid",
-    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
-    "watch-interaction_items": "cds watch --open interaction_items/webapp/index.html?sap-ui-xx-viewCache=false",
-    "undeploy": "cf undeploy MyHANAApp --delete-services --delete-service-keys --delete-service-brokers",
-    "build": "rimraf resources mta_archives && mbt build --mtar archive",
-    "app": "npm start --prefix app",
-    "watch-interaction_header": "cds watch --open interaction_header/webapp/index.html?sap-ui-xx-viewCache=false"
-  },
-  "log": {
-    "service": true
-  },
-  "features": {
-    "preserve_computed": true
-  },
-  "cds": {
-    "cov2ap": {
-      "plugin": true
+    "name": "MyHANAApp",
+    "version": "1.0.0",
+    "description": "My HANA CAP project.",
+    "repository": "https://github.com/loganathanc1603/SAPBTPDevelopment.git",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@cap-js-community/odata-v2-adapter": "^1.11.6",
+        "@sap/cds": "^6.8.2",
+        "@sap/xssec": "^3",
+        "express": "^4",
+        "hdb": "^0.19.0",
+        "passport": "^0.6.0",
+        "sqlite3": "^5.1.6"
     },
-    "requires": {
-      "db": {
-        "kind": "sql"
-      },
-      "[production]": {
-        "db": {
-          "kind": "hana-cloud"
+    "scripts": {
+        "start": "cds-serve",
+        "cds-watch-hybrid": "cds watch --profile hybrid",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+        "watch-interaction_items": "cds watch --open interaction_items/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy MyHANAApp --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "app": "npm start --prefix app",
+        "watch-interaction_header": "cds watch --open interaction_header/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-bank_fpm": "cds watch --open bankfpm/index.html?sap-ui-xx-viewCache=false --livereload false"
+    },
+    "log": {
+        "service": true
+    },
+    "features": {
+        "preserve_computed": true
+    },
+    "cds": {
+        "cov2ap": {
+            "plugin": true
         },
-        "auth": {
-          "kind": "xsuaa"
+        "requires": {
+            "db": {
+                "kind": "sql"
+            },
+            "[production]": {
+                "db": {
+                    "kind": "hana-cloud"
+                },
+                "auth": {
+                    "kind": "xsuaa"
+                }
+            }
+        },
+        "build": {
+            "[node]": {
+                "target": "gen",
+                "tasks": [
+                    {
+                        "for": "node-cf"
+                    },
+                    {
+                        "for": "hana"
+                    }
+                ]
+            },
+            "[hana]": {
+                "target": "gen",
+                "tasks": [
+                    {
+                        "for": "hana"
+                    }
+                ]
+            }
         }
-      }
     },
-    "build": {
-      "[node]": {
-        "target": "gen",
-        "tasks": [
-          {
-            "for": "node-cf"
-          },
-          {
-            "for": "hana"
-          }
-        ]
-      },
-      "[hana]": {
-        "target": "gen",
-        "tasks": [
-          {
-            "for": "hana"
-          }
-        ]
-      }
-    }
-  },
-  "devDependencies": {
-    "@sap/cds-dk": "^7",
-    "@sap/ux-specification": "^1.108.11",
-    "rimraf": "^3.0.2"
-  },
-  "sapux": [
-    "app/interaction_header"
-  ]
+    "devDependencies": {
+        "@sap/cds-dk": "^7",
+        "@sap/ux-specification": "^1.108.11",
+        "rimraf": "^3.0.2",
+        "cds-plugin-ui5": "^0.6.13"
+    },
+    "sapux": [
+        "app/interaction_header",
+        "app/bank_fpm"
+    ],
+    "workspaces": [
+        "app/*"
+    ]
 }

@@ -80,10 +80,25 @@ modules:
       - interactionheader.zip
       name: interactionheader
       target-path: resources/
+    - artifacts:
+      - bankfpm.zip
+      name: bankfpm
+      target-path: resources/
 - name: interactionheader
   type: html5
   description: UI5 Module
   path: app/interaction_header
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: bankfpm
+  type: html5
+  description: UI5 Module
+  path: app/bank_fpm
   build-parameters:
     build-result: dist
     builder: custom
