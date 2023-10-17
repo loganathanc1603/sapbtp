@@ -80,10 +80,6 @@ modules:
       - interactionheader.zip
       name: interactionheader
       target-path: resources/
-    - artifacts:
-      - customefiori.zip
-      name: customefiori
-      target-path: resources/
 - name: interactionheader
   type: html5
   description: UI5 Module
