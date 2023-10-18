@@ -8,6 +8,7 @@ default-*.json
 gen/
 node_modules/
 target/
+./app/bank_fpm/dist
 
 # Web IDE, App Studio
 .che/
