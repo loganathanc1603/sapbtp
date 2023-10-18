@@ -2,8 +2,13 @@
 xmlns="sap.m" 
 xmlns:macros="sap.fe.macros"
     xmlns:html="http://www.w3.org/1999/xhtml" controllerName="bankfpm.ext.main.Main">
-    <Page id="Main" title="Main">
+    <Page id="Main" title="Bank Application">
         <content>
+             <Button id="createButton"
+                text="Create a new Passenger"
+                press="onCreatePress"
+                type="Emphasized"
+                class="sapUiSmallMarginBegin sapUiSmallMarginBottom" />
         <Panel id="idMainPanel" expandable="true" expanded="true" headerText="Bank Items">
 				<macros:FilterBar id="idFilterbarBank" metaPath="@com.sap.vocabularies.UI.v1.SelectionFields"/>
 				<macros:Table id="idTable" metaPath="@com.sap.vocabularies.UI.v1.LineItem" 
