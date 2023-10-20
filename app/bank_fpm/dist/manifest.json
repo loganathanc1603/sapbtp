@@ -65,7 +65,8 @@
                 "sap.m": {},
                 "sap.ui.core": {},
                 "sap.ushell": {},
-                "sap.fe.templates": {}
+                "sap.fe.templates": {},
+                "sap.f": {}
             }
         },
         "contentDensities": {
@@ -98,12 +99,21 @@
             "css": []
         },
         "routing": {
-            "config": {},
             "routes": [
                 {
                     "name": "BanksMain",
                     "pattern": ":?query:",
-                    "target": "BanksMain"
+                    "target": [
+                        "BanksMain"
+                    ]
+                },
+                {
+                    "name": "BanksDetails",
+                    "pattern": "Banks({BanksKey}):?query:",
+                    "target": [
+                        "BanksMain",
+                        "BanksDetails"
+                    ]
                 }
             ],
             "targets": {
@@ -113,13 +123,52 @@
                     "name": "sap.fe.core.fpm",
                     "options": {
                         "settings": {
-                            "navigation": {},
+                            "viewName": "bankfpm.ext.main.Main",
                             "contextPath": "/Banks",
-                            "viewName": "bankfpm.ext.main.Main"
+                            "navigation": {
+                                "Banks": {
+                                    "detail": {
+                                        "route": "BanksDetails"
+                                    }
+                                }
+                            }
                         }
-                    }
+                    },
+                    "controlAggregation": "beginColumnPages",
+                    "contextPattern": ""
+                },
+                "BanksDetails": {
+                    "type": "Component",
+                    "id": "BanksDetails",
+                    "name": "sap.fe.core.fpm",
+                    "options": {
+                        "settings": {
+                            "viewName": "bankfpm.ext.view.Details",
+                            "contextPath": "/Banks"
+                        }
+                    },
+                    "controlAggregation": "midColumnPages",
+                    "contextPattern": "/Banks({BanksKey})"
                 }
+            },
+            "config": {
+                "flexibleColumnLayout": {
+                    "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
+                    "defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
+                },
+                "routerClass": "sap.f.routing.Router"
             }
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {}
+            }
+        },
+        "rootView": {
+            "viewName": "sap.fe.templates.RootContainer.view.Fcl",
+            "type": "XML",
+            "async": true,
+            "id": "appRootView"
         }
     },
     "sap.cloud": {

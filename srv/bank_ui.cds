@@ -8,8 +8,7 @@ annotate service.Banks with @(UI: {
     LineItem                             : [
         {
             $Type             : 'UI.DataField',
-            Value             : BankID,
-            ![@UI.Importance] : #High,
+            Value             : BankID
         },
         {
             $Type             : 'UI.DataField',
@@ -39,7 +38,7 @@ annotate service.Banks with @(UI: {
         FoundedDate,
         CEOName,
         CurrencyCode_code,
-        IsActive
+        IsActive       
     ],
 
     FieldGroup #GeneralInformation1      : {
@@ -64,6 +63,10 @@ annotate service.Banks with @(UI: {
             {
                 $Type: 'UI.DataField',
                 Value: BankType_code
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: FoundedDate
             }
         ]
     },
@@ -86,6 +89,14 @@ annotate service.Banks with @(UI: {
             {
                 $Type: 'UI.DataField',
                 Value: BankID
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: BankType_code
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: FoundedDate
             }
         ]
     },
@@ -104,11 +115,7 @@ annotate service.Banks with @(UI: {
             {
                 $Type: 'UI.DataField',
                 Value: RBIApproved
-            },
-            {
-                $Type: 'UI.DataField',
-                Value: FoundedDate
-            },
+            },            
             {
                 $Type: 'UI.DataField',
                 Value: IsActive
@@ -130,10 +137,6 @@ annotate service.Banks with @(UI: {
             {
                 $Type: 'UI.DataField',
                 Value: RBIApproved
-            },
-            {
-                $Type: 'UI.DataField',
-                Value: FoundedDate
             },
             {
                 $Type: 'UI.DataField',

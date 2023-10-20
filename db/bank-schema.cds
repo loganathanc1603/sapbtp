@@ -49,10 +49,11 @@ entity Branches : managed {
 };
 
 
-entity BankType : sap.common.CodeList {
+entity BankType : CodeList {
     key code : String enum {
             Public  = 'PU';
             Private = 'PR';
             Trust   = 'TR';
         } default 'PR';
 }
+

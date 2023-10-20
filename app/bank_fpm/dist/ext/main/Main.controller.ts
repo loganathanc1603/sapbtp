@@ -1,4 +1,5 @@
 import Controller from "sap/fe/core/PageController";
+import Table from "sap/fe/macros/table/TableAPI";
 
 /**
  * @namespace bankfpm.ext.main.Main.controller
@@ -39,4 +40,13 @@ export default class Main extends Controller {
     // public onExit(): void {
     //
     //  }
+
+    async onCreatePress(): Promise<void> {
+        await this.getExtensionAPI()
+          .getEditFlow()
+          .createDocument("/Banks", { creationMode: "NewPage" });
+    
+        const table = this.byId("idTable") as Table;
+        table.refresh();
+      }
 }

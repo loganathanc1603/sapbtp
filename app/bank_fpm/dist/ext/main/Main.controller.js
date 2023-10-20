@@ -1,2 +1,2 @@
-"use strict";sap.ui.define(["sap/fe/core/PageController"],function(e){"use strict";var n=e.extend("bankfpm.ext.main.Main.controller.Main",{});return n});
+"use strict";sap.ui.define(["sap/fe/core/PageController"],function(e){"use strict";var r=e.extend("bankfpm.ext.main.Main.controller.Main",{onCreatePress:function e(){try{var r=this;return Promise.resolve(r.getExtensionAPI().getEditFlow().createDocument("/Banks",{creationMode:"NewPage"})).then(function(){var e=r.byId("idTable");e.refresh()})}catch(e){return Promise.reject(e)}}});return r});
 //# sourceMappingURL=Main.controller.js.map
