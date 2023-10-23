@@ -7,8 +7,8 @@ annotate service.Banks with @(UI: {
 
     LineItem                             : [
         {
-            $Type             : 'UI.DataField',
-            Value             : BankID
+            $Type: 'UI.DataField',
+            Value: BankID
         },
         {
             $Type             : 'UI.DataField',
@@ -38,7 +38,7 @@ annotate service.Banks with @(UI: {
         FoundedDate,
         CEOName,
         CurrencyCode_code,
-        IsActive       
+        IsActive
     ],
 
     FieldGroup #GeneralInformation1      : {
@@ -115,7 +115,7 @@ annotate service.Banks with @(UI: {
             {
                 $Type: 'UI.DataField',
                 Value: RBIApproved
-            },            
+            },
             {
                 $Type: 'UI.DataField',
                 Value: IsActive
@@ -144,7 +144,6 @@ annotate service.Banks with @(UI: {
             }
         ]
     },
-
 
     FieldGroup #GeneralInformation3      : {
         $Type: 'UI.FieldGroupType',
@@ -240,7 +239,7 @@ annotate service.Banks with @(UI: {
         $Type         : 'UI.HeaderInfoType',
         TypeName      : 'Bank Item',
         TypeNamePlural: 'Banks Items',
-        TypeImageUrl  : 'sap-icon://alert',
+        TypeImageUrl  : 'sap-icon://offsite-work',
         Title         : {
             $Type: 'UI.DataField',
             Value: BankID
@@ -269,6 +268,12 @@ annotate service.Banks with @(UI: {
             ID    : 'GeneratedFacet1',
             Label : 'General Information',
             Target: '@UI.FieldGroup#GeneralInformation3',
+        },
+        {
+            $Type : 'UI.ReferenceFacet',
+            ID    : 'BRANCHITEMS',
+            Label : 'Branch Information',
+            Target: 'to_Branch/@UI.LineItem',
         }
     ],
 
@@ -288,4 +293,148 @@ annotate service.Banks with @(UI: {
     StockPrice    @(title: '{i18n>STOCK_PRICE}');
     Revenue       @(title: '{i18n>BANK_REVENUE}');
     Website       @(title: '{i18n>WEBSITE}')
+};
+
+annotate service.Branches with @(UI: {
+    LineItem                         : [
+        {
+            $Type: 'UI.DataField',
+            Value: BranchCode
+        },
+        {
+            $Type: 'UI.DataField',
+            Value: BranchName
+        },
+        {
+            $Type: 'UI.DataField',
+            Value: City
+        },
+        {
+            $Type: 'UI.DataField',
+            Value: State
+        },
+        {
+            $Type: 'UI.DataField',
+            Value: PostalCode
+        },
+        {
+            $Type: 'UI.DataField',
+            Value: IFSC
+        },
+    ],
+    HeaderInfo                       : {
+        $Type         : 'UI.HeaderInfoType',
+        TypeName      : 'Branch',
+        TypeNamePlural: 'Branches',
+        TypeImageUrl  : 'sap-icon://building',
+        Title         : {
+            $Type: 'UI.DataField',
+            Value: BranchCode
+        },
+        Description   : {
+            $Type: 'UI.DataField',
+            Value: BranchName
+        }
+    },
+
+    FieldGroup #BranchGeneral        : {
+        $Type: 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type: 'UI.DataField',
+                Value: BranchCode
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: BranchName
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: IFSC
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: MICRCode
+            }
+        ]
+    },
+
+    FieldGroup #BranchAddress        : {
+        $Type: 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type: 'UI.DataField',
+                Value: City
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: State
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: CountryCode_code
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: FullAddress
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: PhoneNo
+            }
+        ]
+    },
+
+    FieldGroup #BranchAdminInfomation: {
+        $Type: 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type: 'UI.DataField',
+                Value: createdBy
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: createdAt
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: modifiedBy
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: modifiedAt
+            }
+        ]
+    },
+
+    Facets                           : [
+        {
+            $Type : 'UI.ReferenceFacet',
+            Label : 'Basic Information',
+            ID    : 'BRANCHGENERAL',
+            Target: '@UI.FieldGroup#BranchGeneral',
+        },
+        {
+            $Type : 'UI.ReferenceFacet',
+            Label : 'Address Information',
+            ID    : 'BRANCHADDRESS',
+            Target: '@UI.FieldGroup#BranchAddress',
+        },
+        {
+            $Type : 'UI.ReferenceFacet',
+            Label : 'Address Information',
+            ID    : 'BRANCHADMIN',
+            Target: '@UI.FieldGroup#BranchAdminInfomation',
+        }
+    ],
+}) {
+    BranchCode  @(title: '{i18n>BRANCH_CODE}');
+    BranchName  @(title: '{i18n>BRANCH_NAME}');
+    FullAddress @(title: '{i18n>BRANCH_ADDRESS}');
+    City        @(title: '{i18n>BRANCH_CITY}');
+    State       @(title: '{i18n>BRANCH_STATE}');
+    PostalCode  @(title: '{i18n>BRANCH_POSTALCODE}');
+    IFSC        @(title: '{i18n>BRANCH_POSTALCODE}');
+    MICRCode    @(title: '{i18n>BRANCH_POSTALCODE}');
+    PhoneNo     @(title: '{i18n>BRANCH_POSTALCODE}');
 };
