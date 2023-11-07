@@ -38,6 +38,10 @@ https://developers.sap.com/tutorials/btp-app-ci-cd-btp.html
 - cds watch --profile hybrid
 - https://cap.cloud.sap/docs/advanced/hybrid-testing
 
+## Using cds deploy for Ad-Hoc Deployments
+- cds deploy --to hana --profile hybrid
+- https://cap.cloud.sap/docs/guides/databases-hana
+
 ## Enabling OData v2 service in CAPM Application
 https://cap.cloud.sap/docs/advanced/odata#odata-v2-proxy-node
 
@@ -46,7 +50,6 @@ cds build
 https://cap.cloud.sap/docs/guides/deployment/custom-builds
 
 ## Enabling OData V2 via Proxy in Node.js Apps
-![Enabling OData V2 via Proxy in Node.js Apps Screenshot](Screenshots/Enabling%20OData%20V2.png)
 - npm add @cap-js-community/odata-v2-adapter
 - https://cap.cloud.sap/docs/advanced/odata#odata-v2-proxy-node
 
