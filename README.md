@@ -42,6 +42,9 @@ https://developers.sap.com/tutorials/btp-app-ci-cd-btp.html
 - cds deploy --to hana --profile hybrid
 - https://cap.cloud.sap/docs/guides/databases-hana
 
+## Simple steps to deploy your CAP project to HANA cloud
+- https://blogs.sap.com/2021/02/11/simple-steps-to-deploy-your-cap-project-to-hana-cloud/
+
 ## Enabling OData v2 service in CAPM Application
 https://cap.cloud.sap/docs/advanced/odata#odata-v2-proxy-node
 
