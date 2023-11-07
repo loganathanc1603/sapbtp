@@ -42,13 +42,13 @@ https://developers.sap.com/tutorials/btp-app-ci-cd-btp.html
 https://cap.cloud.sap/docs/advanced/odata#odata-v2-proxy-node
 
 ## SAP CAPire CDS Builds
-![Alt text](Screenshots/image.png)
 cds build
 https://cap.cloud.sap/docs/guides/deployment/custom-builds
 
 ## Enabling OData V2 via Proxy in Node.js Apps
-npm add @cap-js-community/odata-v2-adapter
-https://cap.cloud.sap/docs/advanced/odata#odata-v2-proxy-node
+![Enabling OData V2 via Proxy in Node.js Apps Screenshot](Screenshots/Enabling%20OData%20V2.png)
+- npm add @cap-js-community/odata-v2-adapter
+- https://cap.cloud.sap/docs/advanced/odata#odata-v2-proxy-node
 
 ## SAP Standalone App Router
 cds add approuter
