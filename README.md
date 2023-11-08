@@ -84,8 +84,7 @@ cds add approuter
 - git config --global user.email "YOUR_EMAIL"
 - git clone https://github.com/SAP-samples/cloud-cap-samples.git
 
-
-## Important CLI commands
+## CF CLI commands
 - cf login -u abc@gmail.com -p xxxxxxxx -a https://api.cf.us10-001.hana.ondemand.com -o xxxxxx999trial -s xxxdev
 - cf create-service xsuaa application MyHANAApp-auth -c xs-security.json
 - cf services
@@ -99,6 +98,7 @@ cds add approuter
 - cf undeploy cpapp --delete-service-keys --delete-services
 - cf undeploy cpapp
 
+## CDS CLI commands
 - cds init bookshop
 - cds watch
 - cds watch --profile hybrid
@@ -112,9 +112,11 @@ cds add approuter
 - cds add mta
 - cds build --production
 
+## MBT CLI commands
 - mbt --version
 - mbt build -t ./
 
+## NPM CLI commands
 - npm install
 - npm ci
 - npm install --global mbt
@@ -127,9 +129,11 @@ cds add approuter
 - npm add sqlite3 -D
 - npm config delete "@sap:registry"
 
+## FIORI CLI commands
 - fiori add deploy-config cf
 - fiori add flp-config
 
+## UI5 CLI commands
 - ui5 init
 - ui5 use SAPUI5@1.117.0
 - ui5 add sap.ui.core sap.m themelib_sap_fiori_3
