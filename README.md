@@ -60,7 +60,7 @@ https://developers.sap.com/tutorials/btp-app-ci-cd-btp.html
 - https://cap.cloud.sap/docs/advanced/odata#odata-v2-proxy-node
 
 ## SAP Standalone App Router
-cds add approuter
+- cds add approuter
 - app:npm start --prefix app
 - cds bind --exec npm run app
 
@@ -79,6 +79,9 @@ cds add approuter
 ## How to implement Bound functions and Unbound functions in SAP CAPM
 - https://blogs.sap.com/2021/06/16/how-to-implement-bound-functions-and-unbound-functions-in-sap-capm/
 
+## Cloud MTA Build Tool (MBT)
+- https://sap.github.io/cloud-mta-build-tool/
+
 ## Important GIT Commands
 - git config --global user.name "YOUR_USER_NAME"
 - git config --global user.email "YOUR_EMAIL"
@@ -95,8 +98,8 @@ cds add approuter
 - cf logs --recent <appname>
 - cf logs <appname>
 - cf deploy MyHANAApp.0.0.mtar
-- cf undeploy cpapp --delete-service-keys --delete-services
-- cf undeploy cpapp
+- cf undeploy MyHANAApp --delete-service-keys --delete-services
+- cf undeploy MyHANAApp
 
 ## CDS CLI commands
 - cds init bookshop
