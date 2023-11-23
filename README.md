@@ -79,6 +79,9 @@ https://developers.sap.com/tutorials/btp-app-ci-cd-btp.html
 ## How to implement Bound functions and Unbound functions in SAP CAPM
 - https://blogs.sap.com/2021/06/16/how-to-implement-bound-functions-and-unbound-functions-in-sap-capm/
 
+## Useful CAP CDS and Fiori Commands to Accelerate Development and Deploymen
+- https://blogs.sap.com/2022/10/19/useful-cap-cds-and-fiori-commands-to-accelerate-development-and-deployment/
+
 ## Cloud MTA Build Tool (MBT)
 - https://sap.github.io/cloud-mta-build-tool/
 
@@ -105,8 +108,8 @@ https://developers.sap.com/tutorials/btp-app-ci-cd-btp.html
 - cds init bookshop
 - cds watch
 - cds watch --profile hybrid
-- cds compile srv/ --to xsuaa > xs-security.json
-- cds deploy --to sqlite:db/myhanaapp
+- cds bind -2  MyHANAApp-db:MyHANAApp-db-key
+- cds deploy --to sqlite:db/myhanaapp.db
 - cds deploy --to hana --profile hybrid
 - cds deploy --to hana
 - cds add hana --for production
@@ -114,6 +117,15 @@ https://developers.sap.com/tutorials/btp-app-ci-cd-btp.html
 - cds add pipeline
 - cds add mta
 - cds build --production
+- cds build
+- cds build --for hana
+- cds compile srv/ --to xsuaa > xs-security.json
+- cds compile db/ --to sql
+- cds compile db/ --to json
+- cds compile db/ --to yml
+- cds db/ -2 sql
+- cds db/ -2 json
+- cds db/ -2 yml
 
 ## MBT CLI commands
 - mbt --version
