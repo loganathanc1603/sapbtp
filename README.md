@@ -79,7 +79,7 @@ https://developers.sap.com/tutorials/btp-app-ci-cd-btp.html
 ## How to implement Bound functions and Unbound functions in SAP CAPM
 - https://blogs.sap.com/2021/06/16/how-to-implement-bound-functions-and-unbound-functions-in-sap-capm/
 
-## Useful CAP CDS and Fiori Commands to Accelerate Development and Deploymen
+## Useful CAP CDS and Fiori Commands to Accelerate Development and Deployment
 - https://blogs.sap.com/2022/10/19/useful-cap-cds-and-fiori-commands-to-accelerate-development-and-deployment/
 
 ## Cloud MTA Build Tool (MBT)
@@ -109,6 +109,7 @@ https://developers.sap.com/tutorials/btp-app-ci-cd-btp.html
 - cds watch
 - cds watch --profile hybrid
 - cds bind -2  MyHANAApp-db:MyHANAApp-db-key
+- cds bind -2 bookshop-auth
 - cds deploy --to sqlite:db/myhanaapp.db
 - cds deploy --to hana --profile hybrid
 - cds deploy --to hana
@@ -116,6 +117,8 @@ https://developers.sap.com/tutorials/btp-app-ci-cd-btp.html
 - cds add xsuaa --for production
 - cds add pipeline
 - cds add mta
+- cds add hana --for hybrid
+- cds add xsuaa --for hybrid
 - cds build --production
 - cds build
 - cds build --for hana
@@ -134,6 +137,9 @@ https://developers.sap.com/tutorials/btp-app-ci-cd-btp.html
 ## NPM CLI commands
 - npm install
 - npm ci
+- npm i -g hana-cli
+- npm add @sap/xssec
+- npm add passport
 - npm install --global mbt
 - npm install --global @sap/cds-dk --@sap:registry=https://npmjs.org/
 - npm install --global @sap/ux-ui5-tooling

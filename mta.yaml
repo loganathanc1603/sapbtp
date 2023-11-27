@@ -53,11 +53,13 @@ modules:
           TokenServiceKeyName: MyHANAApp-auth-key
           URL: ~{srv-api/srv-url}
           sap.cloud.service: MyHANAApp.service
+
         - Name: MyHANAApp-repo-host
           ServiceInstanceName: MyHANAApp-repo-host
           ServiceKeyName: MyHANAApp-repo-host-key
           sap.cloud.service: MyHANAApp.service
         - Authentication: OAuth2UserTokenExchange
+        
           Name: MyHANAApp-auth
           ServiceInstanceName: MyHANAApp-auth
           ServiceKeyName: MyHANAApp-auth-key
