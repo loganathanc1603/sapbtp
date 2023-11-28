@@ -7,9 +7,7 @@
       "type": "shell",
       "label": "cds watch",
       "command": "cds",
-      "args": [
-        "watch"
-      ],
+      "args": ["watch"],
       "group": {
         "kind": "build",
         "isDefault": true
@@ -18,13 +16,9 @@
     },
     {
       "type": "shell",
-      "label": "cds serve",
+      "label": "cds run",
       "command": "cds",
-      "args": [
-        "serve",
-        "--with-mocks",
-        "--in-memory?"
-      ],
+      "args": ["run", "--with-mocks", "--in-memory?"],
       "problemMatcher": []
     }
   ]
