@@ -1,2 +1,6 @@
 *node_modules*/
 /*.vscode*/
+
+/node_modules/
+# added by cds bind
+.cdsrc-private.json

@@ -1,13 +1,17 @@
 {
-  "name": "SAPBTPDevelopment",
+  "name": "side-by-side-extensibility",
   "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
+  "description": "CAPM Side By Side Extension | OnPremise",
+  "repository": "https://github.com/loganathanc1603/SAPBTPDevelopment.git",
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@sap-cloud-sdk/http-client": "^3.8.1",
+    "@sap-cloud-sdk/resilience": "^3.8.1",
     "@sap/cds": ">=5",
-    "express": "^4"
+    "express": "^4",
+    "@sap/xssec": "^3",
+    "passport": "^0"
   },
   "devDependencies": {
     "sqlite3": "^5.0.4"
@@ -38,6 +42,21 @@
     "rules": {
       "no-console": "off",
       "require-atomic-updates": "off"
+    }
+  },
+  "cds": {
+    "requires": {
+      "SEPMRA_PROD_MAN": {
+        "kind": "odata-v2",
+        "model": "srv\\external\\SEPMRA_PROD_MAN",
+        "credentials": {
+          "destination": "ES5",
+          "path": "/sap/opu/odata/sap/SEPMRA_PROD_MAN"
+        }
+      },
+      "auth": {
+        "kind": "dummy"
+      }
     }
   }
 }

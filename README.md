@@ -1,25 +1,18 @@
-# Getting Started
+## CAPM Side By SIde Extension | OnPremise | Business Application Studio
 
-Welcome to your new project.
+- https://www.youtube.com/watch?v=jTzkogE_Wm0&t=331s
 
-It contains these folders and files, following our recommended project layout:
+## ES5 Demo System
+- https://sapes5.sapdevcenter.com/sap/opu/odata/sap/SEPMRA_PROD_MAN/
 
-File or Folder | Purpose
----------|----------
-`app/` | content for UI frontends goes here
-`db/` | your domain models and data go here
-`srv/` | your service models and code go here
-`package.json` | project metadata and configuration
-`readme.md` | this getting started guide
-
-
-## Next Steps
-
-- Open a new terminal and run `cds watch` 
-- (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
-- Start adding content, for example, a [db/schema.cds](db/schema.cds).
-
-
-## Learn More
-
-Learn more at https://cap.cloud.sap/docs/get-started/.
+## Important Commands
+- npm i @sap-cloud-sdk/resilience 
+- npm i @sap-cloud-sdk/http-client
+- cf cs destination lite es5_destination
+- cf csk es5_destination default
+- cf cs connectivity lite es5_connectivity
+- cf csk es5_connectivity default
+- cds bind -2 es5_destination:default
+- cds bind -2 es5_connectivity:default
+- cds add mta
+- cds add xsuaa
