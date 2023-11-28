@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "cds run",
-    "cds_watch_hybrid" : "cds watch --profile hybrid"
+    "cds_watch_hybrid": "cds watch --profile hybrid"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -57,6 +57,14 @@
       },
       "auth": {
         "kind": "dummy"
+      },
+      "northwind": {
+        "kind": "odata-v2",
+        "model": "srv\\external\\northwind",
+        "credentials": {
+          "destination": "Northwind",
+          "path": "/v2/northwind/northwind.svc/"
+        }
       }
     }
   }
