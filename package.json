@@ -17,7 +17,8 @@
     "sqlite3": "^5.0.4"
   },
   "scripts": {
-    "start": "cds run"
+    "start": "cds run",
+    "cds_watch_hybrid" : "cds watch --profile hybrid"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",

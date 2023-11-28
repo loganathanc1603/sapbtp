@@ -11,6 +11,12 @@ module.exports = cds.service.impl(function () {
 
     this.on('READ', SEPMRA_C_PD_Review, ConnectBackend);
 
+    this.after('READ', SEPMRA_C_PD_Review, (req) => {
+        req.forEach((oValue) => {
+            if (!oValue.Product) oValue.Product = "Dymmy Product"
+        });
+    });
+
     this.on('READ', SEPMRA_I_StockAvailability, ConnectBackend);
 
     this.on('READ', SEPMRA_I_ProductMainCategory, ConnectBackend);

@@ -16,6 +16,19 @@ service ProductExternalService {
     entity SEPMRA_I_ProductMainCategory as
         select from SEPMRA_PROD_MAN.SEPMRA_I_ProductMainCategory {
             *
-        }
+        };
+
+
+    annotate SEPMRA_C_PD_Review with @(UI:{
+        LineItem  : [
+            {
+                $Type: 'UI.DataField',
+                Value: Product
+            }
+        ],
+        SelectionFields  : [
+            Product
+        ],
+    })
 
 }
