@@ -9,8 +9,8 @@
     "@sap-cloud-sdk/http-client": "^3.8.1",
     "@sap-cloud-sdk/resilience": "^3.8.1",
     "@sap/cds": ">=5",
-    "express": "^4",
     "@sap/xssec": "^3",
+    "express": "^4",
     "passport": "^0"
   },
   "devDependencies": {
@@ -64,6 +64,16 @@
         "credentials": {
           "destination": "Northwind",
           "path": "/v2/northwind/northwind.svc/"
+        }
+      },
+      "API_BUSINESS_PARTNER": {
+        "kind": "odata-v2",
+        "model": "srv\\external\\API_BUSINESS_PARTNER",
+        "credentials": {
+          "headers": {
+            "APIKey": "oATX9A8l8FLwx9gnVAReO5W8lJOByMR0"
+          },
+          "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER"
         }
       }
     }
