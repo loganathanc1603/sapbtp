@@ -85,6 +85,12 @@ https://developers.sap.com/tutorials/btp-app-ci-cd-btp.html
 ## Useful CAP CDS and Fiori Commands to Accelerate Development and Deployment
 - https://blogs.sap.com/2022/10/19/useful-cap-cds-and-fiori-commands-to-accelerate-development-and-deployment/
 
+## SAP Cloud Application Programming Model Community
+- https://community.sap.com/t5/c-khhcw49343/SAP+Cloud+Application+Programming+Model/pd-p/9f13aee1-834c-4105-8e43-ee442775e5ce
+
+## End to End UI5 application on SAP BTP
+- https://community.sap.com/t5/technology-blogs-by-members/end-to-end-ui5-application-on-sap-btp/ba-p/13566710
+
 ## Cloud MTA Build Tool (MBT)
 - https://sap.github.io/cloud-mta-build-tool/
 
