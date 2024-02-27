@@ -88,8 +88,20 @@ https://developers.sap.com/tutorials/btp-app-ci-cd-btp.html
 ## SAP Cloud Application Programming Model Community
 - https://community.sap.com/t5/c-khhcw49343/SAP+Cloud+Application+Programming+Model/pd-p/9f13aee1-834c-4105-8e43-ee442775e5ce
 
+## React Development with SAP Business Application Studio
+- https://community.sap.com/t5/technology-blogs-by-sap/react-development-with-sap-business-application-studio/ba-p/13520135
+
+## Build a Single Page Application Using UI5 Web Components for React
+- https://developers.sap.com/mission.react-spa.html
+
 ## End to End UI5 application on SAP BTP
 - https://community.sap.com/t5/technology-blogs-by-members/end-to-end-ui5-application-on-sap-btp/ba-p/13566710
+
+## Build your own React application with UI5 Web Components for React
+- https://www.youtube.com/watch?v=zyOxgjoSnGw
+
+## SAP BTP React
+- https://developers.sap.com/tutorial-navigator.html?search=react
 
 ## Cloud MTA Build Tool (MBT)
 - https://sap.github.io/cloud-mta-build-tool/
