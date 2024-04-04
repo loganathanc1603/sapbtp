@@ -1,8 +1,0 @@
----
-applications:
-- name: myapp-unsecured
-  routes:
-    - route: node-unsecure-logan-chinna.cfapps.us10.hana.ondemand.com
-  path: myapp
-  memory: 128M
-  buildpack: nodejs_buildpack
