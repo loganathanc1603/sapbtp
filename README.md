@@ -1,1 +1,1 @@
-## This is dummy branch for cloning
+## This branch is for practicing typescript language   
