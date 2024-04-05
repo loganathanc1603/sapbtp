@@ -23,8 +23,8 @@ File or Folder | Purpose
 ## Learn More
 - Learn more at https://cap.cloud.sap/docs/get-started/.
 
-## Developing Applications Running on SAP BTP Using SAP HANA Cloud
-- https://learning.sap.com/learning-journey/develop-applications-running-on-sap-btp-using-sap-hana-cloud
+## Building side-by-side extensions on SAP BTP
+- [https://learning.sap.com/learning-journey/develop-applications-running-on-sap-btp-using-sap-hana-cloud](https://learning.sap.com/learning-journeys/build-side-by-side-extensions-on-sap-btp)
 
 ## Combine CAP with SAP HANA Cloud to Create Full-Stack Application
 - https://developers.sap.com/mission.hana-cloud-cap.html
