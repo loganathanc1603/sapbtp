@@ -1,0 +1,80 @@
+{
+  "name": "bookshop",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": ">=14"
+  },
+  "dependencies": {
+    "@cap-js-community/odata-v2-adapter": "^1.11.8",
+    "@sap/cds": "^7",
+    "@sap/cds-hana": "^2",
+    "@sap/xssec": "^3",
+    "express": "^4",
+    "passport": "^0"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
+    "@sap/ux-specification": "UI5-1.120",
+    "cds-launchpad-plugin": "^2.1.3",
+    "rimraf": "^3.0.2"
+  },
+  "scripts": {
+    "cds_watch": "cds watch",
+    "start": "cds-serve",
+    "watch-bookshop_fiori": "cds watch --open bookshop_fiori/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy bookshop --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+  },
+  "cds": {
+    "launchpad":{
+      "theme":"sap_horizon_dark"
+    },
+    "cov2ap": {
+      "plugin": true
+    },
+    "requires": {
+      "[development]": {
+        "db": {
+          "kind": "sqlite"
+        },
+        "auth": {
+          "kind": "mocked",
+          "users": {
+            "logu_c@xyz.com": {
+              "password": "123",
+              "id": "logu_c@xyz.com",
+              "roles": [],
+              "attr": {}
+            }
+          }
+        }
+      },
+      "[production]": {
+        "db": {
+          "kind": "hana-cloud"
+        },
+        "auth": {
+          "kind": "xsuaa"
+        }
+      },
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "database": "db/mybookshop.db"
+        }
+      }
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
+    }
+  },
+  "sapux": [
+    "app/bookshop_fiori"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "cov2ap": {
+    "plugin": true
+  },
+  "[development]": {
+    "auth": {
+      "passport": {
+        "strategy": "mock",
+        "users": {
+          "logu_c@xyz.com": {
+            "password": "123",
+            "id": "logu_c@xyz.com",
+            "attr": {
+              "email": "logu_c@xyz.com"
+            },
+            "roles": ["Manager"]
+          }
+        }
+      }
+    }
+  }
+}
