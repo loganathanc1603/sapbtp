@@ -1,0 +1,81 @@
+_schema-version: "3.2"
+ID: stdui5
+version: 0.0.1
+modules:
+- name: stdui5-approuter
+  type: approuter.nodejs
+  path: stdui5-approuter
+  requires:
+  - name: stdui5_html_repo_runtime
+  - name: stdui5_uaa
+  - name: stdui5_destination
+  parameters:
+    routes:
+        - route: https://${default-host}.${default-domain}
+    disk-quota: 256M
+    memory: 256M
+- name: demo_ui_deployer
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: stdui5_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+      - artifacts:
+            - html5module.zip
+        name: html5module
+        target-path: resources/ 
+- name: html5module
+  type: html5
+  path: html5module
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: stdui5_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-host
+    service-key:
+        name: stdui5-shared-repo-host-key
+- name: stdui5_destination
+  type: org.cloudfoundry.managed-service
+  parameters:
+      config:
+        HTML5Runtime_enabled: true
+        init_data:
+          instance:
+            destinations:
+            - Authentication: NoAuthentication
+              Name: ui5
+              ProxyType: Internet
+              Type: HTTP
+              URL: https://ui5.sap.com
+            - Authentication: PrincipalPropagation
+              Name: northwind
+              ProxyType: Internet
+              Type: HTTP
+              URL: https://services.odata.org/v2/northwind/northwind.svc
+            existing_destinations_policy: ignore
+        version: 1.0.0    
+      service-plan: lite
+      service: destination
+- name: stdui5_html_repo_runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-runtime
+- name: stdui5_uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
