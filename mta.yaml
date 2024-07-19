@@ -59,12 +59,6 @@ resources:
               ProxyType: Internet
               Type: HTTP
               URL: https://ui5.sap.com
-            - Authentication: PrincipalPropagation
-              Name: northwind
-              ProxyType: Internet
-              Type: HTTP
-              URL: https://services.odata.org/v2/northwind/northwind.svc
-            existing_destinations_policy: ignore
         version: 1.0.0    
       service-plan: lite
       service: destination

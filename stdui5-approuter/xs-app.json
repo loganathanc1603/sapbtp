@@ -1,6 +1,10 @@
 {
   "welcomeFile": "/index.html",
+  "sessionTimeout": 10,
   "authenticationMethod": "route",
+  "logout": {
+    "logoutEndpoint": "/do/logout"
+  },
   "routes": [
     {
       "source": "^/V2/(.*)$",

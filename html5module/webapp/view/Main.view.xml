@@ -2,6 +2,69 @@
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
-        <content />
+    	<headerContent>
+			<Button icon="sap-icon://customer" press="onPressProfile"/>
+		</headerContent>
+        <content> 
+        <Table id="idProductsTable"
+			inset="false"
+			items="{
+				path: '/Products'
+			}">
+			<columns>
+			<Column
+				width="12em">
+				<Text text="Product" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Supplier" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true">
+				<Text text="Category ID" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true">
+				<Text text="Quantity Per Unit" />
+			</Column>
+			<Column>
+				<Text text="UnitP rice" />
+			</Column>
+            <Column>
+				<Text text="Units In Stock" />
+			</Column>
+			<Column>
+				<Text text="Units On Order"/>
+			</Column>
+			<Column>
+				<Text text="Reorder Level"/>
+			</Column>
+			<Column>
+				<Text text="Discontinued"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+						title="{ProductID}"
+						text="{ProductName}"/>
+					<Text text="{SupplierID}" />
+					<Text text="{CategoryID}" />
+					<Text text="{QuantityPerUnit}"/>
+					<Text text="{UnitPrice}"/>
+                    <Text text="{UnitsInStock}"/>
+					<Text text="{UnitsOnOrder}"/>
+					<Text text="{ReorderLevel}"/>
+					<Text text="{Discontinued}"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+        </content>
     </Page>
 </mvc:View>

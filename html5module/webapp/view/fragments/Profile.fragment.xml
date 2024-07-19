@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover
+		id="idProfilePopover"
+		title="{/UserAttributes/displayName}"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--footer"
+		placement="Bottom">
+        <content>
+            <List>
+                <!-- <StandardListItem title="{/UserAttributes/firstname}"/>
+                <StandardListItem title="{/UserAttributes/lastname}"/> -->
+                <StandardListItem title="{/UserAttributes/email}" icon="sap-icon://email"/>
+                <StandardListItem title="Logout" icon="sap-icon://log" type="Active" press="onPressLogOut"/>
+            </List>
+        </content>
+		<!-- <footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+			</OverflowToolbar>
+		</footer> -->
+	</Popover>
+</core:FragmentDefinition>
