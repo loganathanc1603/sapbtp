@@ -25,7 +25,7 @@ modules:
     build-result: resources
     requires:
       - artifacts:
-            - html5module.zip
+          - html5module.zip
         name: html5module
         target-path: resources/ 
 - name: html5module
