@@ -22,20 +22,12 @@ sap.ui.define([
             },
 
             _getUserAttributes: async function () {
-                // fetch("/user-api/currentUser")
-                //     .then(response => {
-                //         let oUser = response.json();
-                //         this.oLocalModel.setProperty("/UserAttributes", oUser);
-                //     })
-                //     .then(data => {
-                //         this.oLocalModel.setProperty("/UserAttributes", {});
-                //     });
-                const url = "/user-api/currentUser";
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error(`Response status: ${response.status}`);
+                const sUrl = "/user-api/currentUser";
+                const oResponse = await fetch(sUrl);
+                if (!oResponse.ok) {
+                    throw new Error(`Response status: ${oResponse.status}`);
                 }
-                const oUser = await response.json();
+                const oUser = await oResponse.json();
                 this.oLocalModel.setProperty("/UserAttributes", oUser);
             },
 

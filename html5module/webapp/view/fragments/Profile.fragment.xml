@@ -3,7 +3,7 @@
 	xmlns:core="sap.ui.core">
 	<Popover
 		id="idProfilePopover"
-		title="{/UserAttributes/displayName}"
+		title="{/UserAttributes/firstname} {/UserAttributes/lastname}"
 		class="sapUiResponsivePadding--header sapUiResponsivePadding--footer"
 		placement="Bottom">
         <content>
