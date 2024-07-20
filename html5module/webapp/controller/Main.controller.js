@@ -10,7 +10,9 @@ sap.ui.define([
 
             onInit: function () {
                 this.oLocalModel = new sap.ui.model.json.JSONModel({
-                    UserAttributes: {}
+                    UserAttributes: {
+                        Initial: "LC"
+                    }
                 });
                 this.getView().setModel(this.oLocalModel, "LocalModel");
                 this._getUserAttributes();
@@ -28,6 +30,7 @@ sap.ui.define([
                     throw new Error(`Response status: ${oResponse.status}`);
                 }
                 const oUser = await oResponse.json();
+                oUser.Initial = oUser.firstname.slice(0,1) + oUser.lastname.slice(0,1);
                 this.oLocalModel.setProperty("/UserAttributes", oUser);
             },
 
@@ -49,6 +52,17 @@ sap.ui.define([
                 this._pPopover.then(function (oPopover) {
                     oPopover.openBy(oButton);
                 });
+            },
+
+            onPressChangeTheme: function () {
+                let sTheme = window.location.search;
+                let sUrl = window.location.origin
+                if(sTheme.includes("sap_horizon_dark")) {
+                    sUrl = sUrl + "/index.html?sap-theme=sap_horizon";
+                } else  {
+                    sUrl = sUrl + "/index.html?sap-theme=sap_horizon_dark";
+                }
+                URLHelper.redirect(sUrl, false);
             }
         });
     });

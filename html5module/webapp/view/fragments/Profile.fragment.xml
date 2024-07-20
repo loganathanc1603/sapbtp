@@ -8,10 +8,12 @@
 		placement="Bottom">
         <content>
             <List>
-                <!-- <StandardListItem title="{/UserAttributes/firstname}"/>
-                <StandardListItem title="{/UserAttributes/lastname}"/> -->
-                <StandardListItem title="{/UserAttributes/email}" icon="sap-icon://email"/>
-                <StandardListItem title="Logout" icon="sap-icon://log" type="Active" press="onPressLogOut"/>
+               <!-- <StandardListItem title="{/UserAttributes/firstname}"/> -->
+				<StandardListItem title="{/UserAttributes/email}" icon="sap-icon://email" class="sapUiTinyMargin"/>
+				<StandardListItem title="Change Theme" icon="sap-icon://palette" type="Active" 
+					press="onPressChangeTheme" class="sapUiTinyMargin"/>                
+                <StandardListItem title="Logout" icon="sap-icon://log" type="Active" press="onPressLogOut"
+					class="sapUiTinyMargin"/>
             </List>
         </content>
 		<!-- <footer>

@@ -1,13 +1,21 @@
-<mvc:View controllerName="html5module.controller.Main"
+<mvc:View controllerName="html5module.controller.Main" xmlns:f="sap.f"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-    	<headerContent>
+    <Page id="idPage">
+    	<!-- <headerContent>
 			<Button icon="sap-icon://customer" press="onPressProfile"/>
-		</headerContent>
+		</headerContent> -->
+		<customHeader>
+			<f:ShellBar title="{i18n>title}" class="sapUiNoMargin"
+				homeIcon="https://ui5.sap.com/resources/sap/ui/documentation/sdk/images/logo_sap.png">
+				<f:profile>
+					<Avatar initials="{LocalModel>/UserAttributes/Initial}" press="onPressProfile"/>
+				</f:profile>
+			</f:ShellBar>
+		</customHeader>
         <content> 
         <Table id="idProductsTable"
-			inset="false"
+			class="sapUiSmallMarginTop"
 			items="{
 				path: '/Products'
 			}">
