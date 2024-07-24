@@ -1,5 +1,5 @@
 <mvc:View controllerName="html5module.controller.Main" xmlns:f="sap.f"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:tnt="sap.tnt"
     xmlns="sap.m">
     <Page id="idPage">
     	<!-- <headerContent>
@@ -66,7 +66,8 @@
                     <Text text="{UnitsInStock}"/>
 					<Text text="{UnitsOnOrder}"/>
 					<Text text="{ReorderLevel}"/>
-					<Text text="{Discontinued}"/>
+					<!-- <Text text="{Discontinued}"/> -->
+					<tnt:InfoLabel text="{Discontinued}" colorScheme="4"/>
 				</cells>
 			</ColumnListItem>
 		</items>
