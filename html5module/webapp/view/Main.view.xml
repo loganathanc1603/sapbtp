@@ -42,13 +42,13 @@
 			<Column>
 				<Text text="UnitP rice" />
 			</Column>
-            <Column>
+            <Column demandPopin="true">
 				<Text text="Units In Stock" />
 			</Column>
-			<Column>
+			<Column demandPopin="true">
 				<Text text="Units On Order"/>
 			</Column>
-			<Column>
+			<Column demandPopin="true">
 				<Text text="Reorder Level"/>
 			</Column>
 			<Column>
@@ -58,9 +58,7 @@
 		<items>
 			<ColumnListItem vAlign="Middle">
 				<cells>
-					<ObjectIdentifier
-						title="{ProductID}"
-						text="{ProductName}"/>
+					<ObjectIdentifier title="{ProductID}" text="{ProductName}"/>
 					<Text text="{SupplierID}" />
 					<Text text="{CategoryID}" />
 					<Text text="{QuantityPerUnit}"/>

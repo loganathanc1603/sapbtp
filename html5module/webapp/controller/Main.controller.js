@@ -11,7 +11,7 @@ sap.ui.define([
             onInit: function () {
                 this.oLocalModel = new sap.ui.model.json.JSONModel({
                     UserAttributes: {
-                        Initial: "LC"
+                        Initial: "UU"
                     }
                 });
                 this.getView().setModel(this.oLocalModel, "LocalModel");
