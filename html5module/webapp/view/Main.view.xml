@@ -2,9 +2,6 @@
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:tnt="sap.tnt"
     xmlns="sap.m">
     <Page id="idPage">
-    	<!-- <headerContent>
-			<Button icon="sap-icon://customer" press="onPressProfile"/>
-		</headerContent> -->
 		<customHeader>
 			<f:ShellBar title="{i18n>title}" class="sapUiNoMargin"
 				homeIcon="https://ui5.sap.com/resources/sap/ui/documentation/sdk/images/logo_sap.png">

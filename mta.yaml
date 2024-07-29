@@ -14,7 +14,7 @@ modules:
         - route: https://${default-host}.${default-domain}
     disk-quota: 256M
     memory: 256M
-- name: demo_ui_deployer
+- name: stdui5_ui_deployer
   type: com.sap.application.content
   path: .
   requires:
@@ -59,6 +59,13 @@ resources:
               ProxyType: Internet
               Type: HTTP
               URL: https://ui5.sap.com
+            - Authentication: NoAuthentication
+              HTML.DynamicDestination: true
+              Name: Northwind
+              ProxyType: Internet
+              Type: HTTP
+              URL: https://services.odata.org/
+            existing_destinations_policy: ignore
         version: 1.0.0    
       service-plan: lite
       service: destination

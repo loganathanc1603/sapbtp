@@ -4,14 +4,11 @@
   "description": "Security profile of called application",
   "oauth2-configuration": {
     "redirect-uris": [
-      "https://*.hana.ondemand.com/**"
+      "https://*.hana.ondemand.com/**",
+      "https://*.trial.applicationstudio.cloud.sap/login/callback"
     ]
   },
   "scopes": [
-    {
-      "name": "uaa.user",
-      "description": "UAA"
-    },
     {
       "name": "$XSAPPNAME.accessDataService",
       "description": "Allows to access data service within ui5-standalone app"
@@ -23,15 +20,8 @@
   ],
   "role-templates": [
     {
-      "name": "Token_Exchange",
-      "description": "UAA",
-      "scope-references": [
-        "uaa.user"
-      ]
-    },
-    {
       "name": "STDUI5_Role",
-      "description": "Basic ui5-standalone app user",
+      "description": "Role Template for Standalone App Router Testing",
       "scope-references": [
         "$XSAPPNAME.accessApp",
         "$XSAPPNAME.accessDataService"

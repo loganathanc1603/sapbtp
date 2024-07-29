@@ -29,6 +29,12 @@
       "service": "sap-approuter-userapi"
     },
     {
+      "source": "(.*)",
+      "target": "/html5module/$1",
+      "service": "html5-apps-repo-rt",
+      "scope": ["$XSAPPNAME.accessApp"]
+    },
+    {
       "source": "^(.*)$",
       "target": "$1",
       "authenticationType": "xsuaa",
