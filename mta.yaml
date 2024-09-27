@@ -53,11 +53,13 @@ modules:
           TokenServiceKeyName: MyHANAApp-auth-key
           URL: ~{srv-api/srv-url}
           sap.cloud.service: MyHANAApp.service
+
         - Name: MyHANAApp-repo-host
           ServiceInstanceName: MyHANAApp-repo-host
           ServiceKeyName: MyHANAApp-repo-host-key
           sap.cloud.service: MyHANAApp.service
         - Authentication: OAuth2UserTokenExchange
+        
           Name: MyHANAApp-auth
           ServiceInstanceName: MyHANAApp-auth
           ServiceKeyName: MyHANAApp-auth-key
@@ -80,10 +82,25 @@ modules:
       - interactionheader.zip
       name: interactionheader
       target-path: resources/
+    - artifacts:
+      - bankfpm.zip
+      name: bankfpm
+      target-path: resources/
 - name: interactionheader
   type: html5
   description: UI5 Module
   path: app/interaction_header
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: bankfpm
+  type: html5
+  description: UI5 Module
+  path: app/bank_fpm
   build-parameters:
     build-result: dist
     builder: custom

@@ -16,7 +16,7 @@ server:
         - /resources
         - /test-resources
         url: https://ui5.sap.com
-        version: 1.98.0 # The UI5 version, for instance, 1.78.1. Empty means latest version
+        version: latest # The UI5 version, for instance, 1.78.1. Empty means latest version
   - name: fiori-tools-appreload
     afterMiddleware: compression
     configuration:
